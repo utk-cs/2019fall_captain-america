@@ -1,6 +1,34 @@
 const {app, BrowserWindow } = require('electron');
 let win;
 
+class Recipe{
+	constructor(name, ing, dir){
+		this.recipename = name;
+		this.ingredients = ing;
+		this.directions = dir;
+	}
+	get name(){
+		return this.recipename;
+	}
+	set name(x){
+		this.recipename = x;
+	}
+	get ings(){
+		return this.ingredients;
+	}
+	set ing(x){
+		this.ingredients = x;
+	}
+	get dirs(){
+		return this.directions;
+	}
+	set dirs(x){
+		this.directions = x;
+	}
+};
+
+
+
 app.on('ready', () => {
     // This creates a new BrowserWindow and sets win to be a reference to that new window.
     win = new BrowserWindow({
