@@ -2,25 +2,20 @@
 <html>
 <body>
 	<form>
-		Recipe Name: <input type="text">
+		Recipe Name: <input type="text" id = recipe_name> 
 		<br>
-		Ingredients: <input type="text">
+		Ingredients: <input type="text" id = ingredients>
 		<br>
-		<input type="text">
-		<br>
-		<input type="text">
-		<br>
-		<br>
-		Directions: <input type="text">
-		<br>
-		<input type="text">
-		<br>
-		<input type="text">
+		Directions: <input type="text" id = directions> 
 		<br>
 		<br>
 	</form>
+	<button id = "add_recipe" value= "test">Add Recipe</button> </br>
 	<input type="button" onclick="location.href='basic.html'" value="Back">
 </body>
+<script>
+	require('./new_recipe.js')
+  </script>
 </html>
 
 
