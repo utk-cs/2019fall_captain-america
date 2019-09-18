@@ -30,10 +30,13 @@ ipcMain.on('search-request', (event, arg) => {
 })
 
 //listens for new recipe to add
-ipcMain.on('recipe', (event, arg) => {
-    console.log(arg)
+ipcMain.on('recipe', (event, recipe_name, ingredients, directions) => {
+    console.log(recipe_name)
+    console.log(ingredients)
+    console.log(directions)
     event.sender.send('response', 'received')
 })
+
 //event for logging message on the console for debugging
 ipcMain.on('log' , (event, arg) => {
     console.log(arg)
