@@ -14,7 +14,6 @@ app.on('ready', () => {
     // This is a method of a BrowserWindow that lets you load an html file to view.
     win.loadFile('basic.html');
 
-
     win.on('close', () => {
         win = null;
     });
@@ -23,8 +22,14 @@ app.on('ready', () => {
 //event listener
 const { ipcMain } = require('electron')
 
-//listens for event "search request"
+//listens for event "search request
+//gets passed arg which is the text in the search request
 ipcMain.on('search-request', (event, arg) => {
-    console.log(arg) //prints arguement when search bar is clicked
+    console.log(arg)
     event.sender.send('response', 'received')
+})
+
+//event for logging message on the console for debugging
+ipcMain.on('log' , (event, arg) => {
+    console.log(arg)
 })

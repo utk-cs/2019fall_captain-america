@@ -1,12 +1,18 @@
 //file that renderers events and sends them to main
 const { ipcRenderer } = require('electron')
 
+//sends message to main for debugging
+function log(message){
+    ipcRenderer.send('log', message)
+}
+
 //when main sends back a response message it will be received here
 ipcRenderer.on('response', (event, arg) => {
-    console.log("HTTP response received: " + arg)
+    console.log("response received: " + arg)
 })
 
-//sending the event "search request" to main when button is clicked
-console.log(ipcRenderer.send('search-request', "this is a search"))
-
-console.log("starting renderer process")
+//gets text in the search bar upon click and sends it to main
+document.getElementById('search-request').addEventListener('click', function(){
+    let search = document.getElementById('search').value;
+    ipcRenderer.send('search-request', search);
+})
