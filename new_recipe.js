@@ -17,5 +17,5 @@ document.getElementById('add_recipe').addEventListener('click', function(){
     let recipe_name = document.getElementById('recipe_name').value;
     let ingredients = document.getElementById('ingredients').value;
     let directions = document.getElementById('directions').value;
-    ipcRenderer.send('recipe', recipe_name + "  " + directions+ " " + ingredients);
+    ipcRenderer.send('recipe', recipe_name, ingredients, directions);
 })
