@@ -57,12 +57,11 @@ ipcMain.on('search-request', (event, arg) => {
     event.sender.send('response', 'received')
 })
 
+
+
 //listens for new recipe to add
 ipcMain.on('recipe', (event, recipe_name, ingredients, directions) => {
-    console.log(recipe_name)
-    console.log(ingredients)
-    console.log(directions)
-    let newrecipe = new Recipe(recipe_name, ingredients, directions);
+    newrecipe = new Recipe(recipe_name, ingredients, directions);
     console.log(newrecipe.name);
     console.log(newrecipe.ingredients);
     console.log(newrecipe.directions);
