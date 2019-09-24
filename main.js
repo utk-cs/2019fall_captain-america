@@ -27,7 +27,7 @@ class Recipe{
 	}
 };
 
-
+var RecipeMap = new Map();
 
 app.on('ready', () => {
     // This creates a new BrowserWindow and sets win to be a reference to that new window.
@@ -61,10 +61,15 @@ ipcMain.on('search-request', (event, arg) => {
 
 //listens for new recipe to add
 ipcMain.on('recipe', (event, recipe_name, ingredients, directions) => {
-    newrecipe = new Recipe(recipe_name, ingredients, directions);
+    console.log(recipe_name)
+    console.log(ingredients)
+    console.log(directions)
+    let newrecipe = new Recipe(recipe_name, ingredients, directions);
+    RecipeMap.set(recipe_name, newrecipe);
     console.log(newrecipe.name);
     console.log(newrecipe.ingredients);
     console.log(newrecipe.directions);
+    console.log(Array.from(RecipeMap));
     event.sender.send('response', 'received')
 })
 
