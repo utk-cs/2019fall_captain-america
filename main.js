@@ -61,9 +61,9 @@ ipcMain.on('search-request', (event, arg) => {
 
 //listens for new recipe to add
 ipcMain.on('recipe', (event, recipe_name, ingredients, directions) => {
-    console.log(recipe_name)
-    console.log(ingredients)
-    console.log(directions)
+    console.log(recipe_name);
+    console.log(ingredients);
+    console.log(directions);
     let newrecipe = new Recipe(recipe_name, ingredients, directions);
     RecipeMap.set(recipe_name, newrecipe);
     console.log(newrecipe.name);
