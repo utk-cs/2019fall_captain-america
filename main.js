@@ -1,6 +1,11 @@
 const {app, BrowserWindow } = require('electron');
 let win;
-
+var RecipeMap = new Map();
+var fs = require('fs');
+fs.open('recipeDatabase.txt', 'a+', function(err, file) {
+    if (err) throw err;
+});
+ 
 class Recipe{
 	constructor(name, ing, dir){
 		this.recipename = name;
@@ -26,8 +31,6 @@ class Recipe{
 		this.directions = x;
 	}
 };
-
-var RecipeMap = new Map();
 
 app.on('ready', () => {
     // This creates a new BrowserWindow and sets win to be a reference to that new window.
@@ -70,7 +73,10 @@ ipcMain.on('recipe', (event, recipe_name, ingredients, directions) => {
     console.log(newrecipe.ingredients);
     console.log(newrecipe.directions);
     console.log(Array.from(RecipeMap));
-    event.sender.send('response', 'received')
+    event.sender.send('response', 'received');
+    fs.appendFile('recipeDatabase.txt', recipe_name + ': \n\t' + ingredients + '\n\t' + directions + '\n\n', function(err) {
+            if (err) throw err;
+        });
 })
 
 //event for logging message on the console for debugging
