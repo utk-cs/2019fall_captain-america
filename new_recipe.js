@@ -18,17 +18,36 @@ document.getElementById('add_recipe').addEventListener('click', function(){
     
     let ingredients = [];
     let directions = [];
-	 
-    ingredients[0] = document.getElementById('ingredients').value;
-    ingredients[1] = document.getElementById('ingredients2').value;
-    ingredients[2] = document.getElementById('ingredients3').value;
-    ingredients[3] = document.getElementById('ingredients4').value;
+    let ing = 'ingredients'; 
+    let dir = 'directions';
+    let i = 1;
+    let ingString = ing.concat(i.toString());
+    let dirString = dir.concat(i.toString());
 
-    directions[0] = document.getElementById('directions').value;
-    directions[1] = document.getElementById('directions2').value;
-    directions[2] = document.getElementById('directions3').value;
-    directions[3] = document.getElementById('directions4').value;
-	
+    while(document.getElementById(ingString).value !== ''){
+	ingredients[i-1] = document.getElementById(ingString).value;
+	i++;
+
+	if(i > 10){
+		break;
+	}
+
+	ingString = ing.concat(i.toString());
+    }
+
+    i = 1;
+    
+    while(document.getElementById(dirString).value !== ''){    
+	directions[i-1] = document.getElementById(dirString).value;
+        i++;
+
+	if(i > 10){
+		break;
+	}
+
+	dirString = dir.concat(i.toString());
+    }
+
    // let ingredients = document.getElementById('ingredients').value;
     //let directions = document.getElementById('directions').value;
     ipcRenderer.send('recipe', recipe_name, ingredients, directions);
