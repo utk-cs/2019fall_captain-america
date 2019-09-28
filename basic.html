@@ -2,6 +2,20 @@
 <html>
 <head>
   <style> 
+    .button {
+      background-color: #F3DBA4;
+      border: none;
+      color: black;
+      padding: 8px 20px;
+      text-align: center;
+      font-size: 12px;
+      font: verdana;
+      cursor: default;
+      width: 150px;
+    }
+    .button:hover {
+      background-color: rgb(231, 193, 139);
+    }
     .center {
       margin: 0;
       position: absolute;
@@ -23,13 +37,13 @@
     <div class="center">
       <h1><font face="verdana">RECIPE BOOK APP</font></h1>
       <br>
-      <input type="button" onclick="location.href='new_recipe.html'" value="New Recipe">
+      <button class="button" onclick="location.href='new_recipe.html'">New Recipe</button>
       <br>
-      <input type="button" onclick="location.href='search.html'" value="Search for Recipe">
+      <button class="button" onclick="location.href='search.html'">Search for Recipe</button>
       <br>
-      <button id="button">Random Recipe</button>
+      <button class="button">Random Recipe</button>
       <br>
-      <input type="button" onclick="location.href='browse.html'"value="Browse Recipes">
+      <button class="button" onclick="location.href='browse.html'">Browse Recipes</button>
       <br>
     </div>
   </body>
