@@ -32,6 +32,13 @@ class Recipe{
 	}
 };
 
+function writeMap(value, key, map) {
+    fs.appendFile('recipeDatabase.txt', key + ': \n\t' + value.ingredients + '\n\t' + value.directions + '\n\n', function(err) {
+        if (err) throw err;
+    });
+    console.log(`${key}: \n\t${value.ingredients}\n\t${value.directions}\n\n`);
+}
+
 app.on('ready', () => {
     // This creates a new BrowserWindow and sets win to be a reference to that new window.
     win = new BrowserWindow({
@@ -46,6 +53,7 @@ app.on('ready', () => {
     win.loadFile('basic.html');
 
     win.on('close', () => {
+        RecipeMap.forEach(writeMap);
         win = null;
     });
 });
@@ -74,9 +82,6 @@ ipcMain.on('recipe', (event, recipe_name, ingredients, directions) => {
     console.log(newrecipe.directions);
     console.log(Array.from(RecipeMap));
     event.sender.send('response', 'received');
-    fs.appendFile('recipeDatabase.txt', recipe_name + ': \n\t' + ingredients + '\n\t' + directions + '\n\n', function(err) {
-            if (err) throw err;
-        });
 })
 
 //event for logging message on the console for debugging
