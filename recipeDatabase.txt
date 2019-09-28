@@ -1,0 +1,16 @@
+Hel: 
+	f,d,s,a,f,e,r,w,w,q
+	jkl;,fdsa,g,nvm,xcv,wer,asdf,sdfa,pio,jkl;dsf
+
+fd: 
+	fdsa,,,,,,,,,
+	,,,,,,,,,
+
+jf;askla: 
+	fsa,,,,,,,,,
+	f,,,,,,,,,
+
+Thing: 
+	stuff
+	other thing
+
