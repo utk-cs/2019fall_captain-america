@@ -64,8 +64,15 @@ const { ipcMain } = require('electron')
 //listens for event "search request"
 //gets passed arg which is the text in the search request
 ipcMain.on('search-request', (event, arg) => {
-    console.log(arg)
-    event.sender.send('response', 'received')
+    if(RecipeMap.has(arg) == true){
+            var displayrecipe = RecipeMap.get(arg)
+            console.log(displayrecipe.ingredients)
+            var a = displayrecipe.ingredients;
+            event.sender.send('recipe', displayrecipe);
+        }
+    else{
+    event.sender.send('norecipe', 'No Recipe Exists')
+    }
 })
 
 
