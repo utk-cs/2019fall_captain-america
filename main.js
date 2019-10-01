@@ -102,3 +102,19 @@ ipcMain.on('recipe', (event, recipe_name, ingredients, directions) => {
 ipcMain.on('log' , (event, arg) => {
     console.log(arg)
 })
+
+//function that gets a random key from the recipe map
+function getRandomKey(collection) {
+    let keys = Array.from(collection.keys());
+    return keys[Math.floor(Math.random() * keys.length)];
+}
+
+//event for handling random recipe request
+ipcMain.on('random_recipe', (event, arg) => {
+            //call random recipe function and get random recipe key
+            var recipe_key = getRandomKey(RecipeMap) 
+            //send random recipe to random.js to display
+            event.sender.send('random_recipe_return', RecipeMap.get(recipe_key));
+            console.log(RecipeMap.get(recipe_key));
+})
+
