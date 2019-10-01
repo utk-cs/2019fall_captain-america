@@ -64,12 +64,12 @@ const { ipcMain } = require('electron')
 //listens for event "search request"
 //gets passed arg which is the text in the search request
 ipcMain.on('search-request', (event, arg) => {
+    //if the map contains the specified recipe send back the data
     if(RecipeMap.has(arg) == true){
             var displayrecipe = RecipeMap.get(arg)
-            console.log(displayrecipe.ingredients)
-            var a = displayrecipe.ingredients;
             event.sender.send('recipe', displayrecipe);
         }
+    //else send an message saying the recipe does not exist
     else{
     event.sender.send('norecipe', 'No Recipe Exists')
     }
@@ -79,25 +79,23 @@ ipcMain.on('search-request', (event, arg) => {
 ipcMain.on('browse-request', (event, arg) => {
     if(RecipeMap.has(arg) == true){
             var displayrecipe = RecipeMap.get(arg)
-            console.log(displayrecipe.ingredients)
-            var a = displayrecipe.ingredients;
             event.sender.send('recipe', displayrecipe);
-        }
-    })
+    }
+})
 
 
 //listens for new recipe to add
 ipcMain.on('recipe', (event, recipe_name, ingredients, directions) => {
-    console.log(recipe_name);
-    console.log(ingredients);
-    console.log(directions);
-    let newrecipe = new Recipe(recipe_name, ingredients, directions);
-    RecipeMap.set(recipe_name, newrecipe);
-    console.log(newrecipe.name);
-    console.log(newrecipe.ingredients);
-    console.log(newrecipe.directions);
-    console.log(Array.from(RecipeMap));
-    event.sender.send('response', 'received');
+    //if recipe name does not exist add it to the map
+    if(RecipeMap.has(recipe_name) == false){
+        let newrecipe = new Recipe(recipe_name, ingredients, directions);
+        RecipeMap.set(recipe_name, newrecipe);
+        event.sender.send('recipe_exists', false);
+    }
+    //if it does exist send back an error
+    else{
+        event.sender.send('recipe_exists', true);
+    }
 })
 
 //event for logging message on the console for debugging

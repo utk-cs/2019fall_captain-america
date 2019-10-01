@@ -6,9 +6,15 @@ function log(message){
     ipcRenderer.send('log', message)
 }
 
-//when main sends back a response message it will be received here
-ipcRenderer.on('response', (event, arg) => {
-    console.log("response received: " + arg)
+//If the recipe name already exists, it will throw an error here
+ipcRenderer.on('recipe_exists', (event, arg) => {
+    let recipe_exists = document.getElementById('recipe_exists');
+    if(arg === true){
+        recipe_exists.textContent = 'Recipe already exists enter in new recipe name';
+    }
+    else{
+        recipe_exists.textContent = 'Recipe added successfully';
+    }
 })
 
 //listens for add recipe button to be clicked
