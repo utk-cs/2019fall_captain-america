@@ -29,3 +29,17 @@ document.getElementById('search-request').addEventListener('click', function(){
     let search = document.getElementById('search').value;
     ipcRenderer.send('search-request', search);
 })
+
+//listens for event "search request"
+//gets passed arg which is the text in the search request
+ipcMain.on('search-request', (event, arg) => {
+    if(RecipeMap.has(arg) == true){
+            var displayrecipe = RecipeMap.get(arg)
+            console.log(displayrecipe.ingredients)
+            var a = displayrecipe.ingredients;
+            event.sender.send('recipe', displayrecipe);
+        }
+    else{
+    event.sender.send('norecipe', 'No Recipe Exists')
+    }
+})

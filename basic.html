@@ -43,9 +43,17 @@
       <br>
       <button class="button">Random Recipe</button>
       <br>
-      <button class="button" onclick="location.href='browse.html'">Browse Recipes</button>
+      <button class="button" onclick="browseFunction()">Browse Recipes</button>
       <br>
     </div>
   </body>
+  <script>
+    function browseFunction() {
+      for (let item of iterator1){
+        console.log(item)
+      }
+
+    }
+  </script>
 
 </html>

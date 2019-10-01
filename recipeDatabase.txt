@@ -14,3 +14,11 @@ Thing: 
 	stuff
 	other thing
 
+test recipe: 
+	ingredient 1
+	directions 1
+
+test: 
+	1
+	1
+

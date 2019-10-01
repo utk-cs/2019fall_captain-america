@@ -75,6 +75,15 @@ ipcMain.on('search-request', (event, arg) => {
     }
 })
 
+//listens for a browse request
+ipcMain.on('browse-request', (event, arg) => {
+    if(RecipeMap.has(arg) == true){
+            var displayrecipe = RecipeMap.get(arg)
+            console.log(displayrecipe.ingredients)
+            var a = displayrecipe.ingredients;
+            event.sender.send('recipe', displayrecipe);
+        }
+    })
 
 
 //listens for new recipe to add
