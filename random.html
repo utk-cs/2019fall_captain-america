@@ -1,17 +1,81 @@
 <!DOCTYPE html>
 <html>
-  <body>
-     <button id = "display_random_recipe" value= "test">Display Random Recipe</button>
-      <input type="button" onclick="location.href='basic.html'" value="Back">
-      <div id='recipename'>
-      </div>
+
+<head>
+  <style>
+    .button {
+      background-color: #F3DBA4;
+      border: none;
+      color: black;
+      padding: 8px 20px;
+      display: block;
+      text-align: center;
+      font-size: 13px;
+      font: verdana;
+      cursor: default;
+      width: 200px;
+      margin-top: 4px;
+    }
+
+    .button:hover {
+      background-color: rgb(231, 193, 139);
+    }
+
+    .top-center {
+      margin: 0;
+      position: absolute;
+      text-align: center;
+      vertical-align: middle;
+      overflow: hidden;
+      top: 0%;
+      left: 50%;
+      margin-right: -50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, 0%);
+    }
+
+    .center {
+      font-family: verdana;
+      font-size: 13px;
+      position: absolute;
+      top: 50%;
+      margin-left: 50%;
+      margin-right: -50%;
+      width: 40%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .recipe-name {
+      text-align: center;
+    }
+
+    .ing-dir {
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-center">
+    <button class="button" id="display_random_recipe" value="test">Display Random Recipe</button>
+    <button class="button" onclick="location.href='basic.html'">Back</button>
+  </div>
+
+  <div class="center ing-dir">
+    <div id='recipename'>
+    </div>
+    
       <div id='ingredients'>
-        </div>
-        <div id='directions'>
-        </div>
-      <script>
-        require('./random.js');
-      </script>
-  </body>
+      </div>
+      <div id='directions'>
+      </div>
+
+  </div>
+
+  <script>
+    require('./random.js');
+  </script>
+</body>
 
 </html>
