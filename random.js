@@ -12,10 +12,24 @@ document.getElementById('display_random_recipe').addEventListener('click', funct
 })
 //displays random recipe into html file
 ipcRenderer.on('random_recipe_return', (event, arg ) => {
-    let recipename = document.getElementById('recipename');
-    let ingredients = document.getElementById('ingredients');
-    let directions = document.getElementById('directions');
-    recipename.textContent = arg.recipename;
-    ingredients.textContent = "Ingredients: " + arg.ingredients;
-    directions.textContent = "Directions: " + arg.directions; 
+
+    //if there are no recipes added yet, display a message 
+    if(arg === 'empty'){
+        let recipename = document.getElementById('recipename');
+        let ingredients = document.getElementById('ingredients');
+        let directions = document.getElementById('directions');
+        recipename.textContent = "No recipes added yet";
+        ingredients.textContent = "";
+        directions.textContent = ""; 
+    }
+    
+    //if there are recipes, then display the recipe
+    else{
+        let recipename = document.getElementById('recipename');
+        let ingredients = document.getElementById('ingredients');
+        let directions = document.getElementById('directions');
+        recipename.textContent = arg.recipename;
+        ingredients.textContent = "Ingredients: " + arg.ingredients;
+        directions.textContent = "Directions: " + arg.directions;
+    } 
 })

@@ -111,10 +111,18 @@ function getRandomKey(collection) {
 
 //event for handling random recipe request
 ipcMain.on('random_recipe', (event, arg) => {
-            //call random recipe function and get random recipe key
-            var recipe_key = getRandomKey(RecipeMap) 
-            //send random recipe to random.js to display
-            event.sender.send('random_recipe_return', RecipeMap.get(recipe_key));
-            console.log(RecipeMap.get(recipe_key));
+
+            //if the map is empty send back a message saying so
+            if (RecipeMap.size == 0){
+                event.sender.send('random_recipe_return', 'empty');
+                console.log(RecipeMap.size);
+            }
+            //if the map is not empty call random key function
+            else{
+                //call random recipe function and get random recipe key
+                var recipe_key = getRandomKey(RecipeMap) 
+                //send random recipe to random.js to display
+                event.sender.send('random_recipe_return', RecipeMap.get(recipe_key));
+            }
 })
 
