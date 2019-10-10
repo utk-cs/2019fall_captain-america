@@ -16,8 +16,8 @@ ipcRenderer.on('recipe', (event, arg ) => {
     let ingString = '';
     let dirString = '';
 
-    recipename.textContent = "Recipe: " + arg.recipename;
-    origin.textContent = "Origin: " + arg.origin;
+    recipename.textContent = arg.recipename;
+    //origin.textContent = "Origin: " + arg.origin;
 
     for(let i = 0; i < arg.ingredients.length; i++){
 	if(i == arg.ingredients.length - 1){
@@ -27,7 +27,7 @@ ipcRenderer.on('recipe', (event, arg ) => {
 	    ingString += arg.ingredients[i] + ", ";
     	}
     }
-    ingredients.textContent = "Ingredients: " + ingString;
+    ingredients.textContent = ingString;
     //ingredients.textContent = "Ingredients: " + arg.ingredients;
     
     for(let i = 0; i < arg.directions.length; i++){
@@ -38,7 +38,7 @@ ipcRenderer.on('recipe', (event, arg ) => {
 	    dirString += arg.directions[i] + ", ";
         }
     }
-    directions.textContent = "Directions: " + dirString;	
+    directions.textContent = dirString;	
     //directions.textContent = "Directions: " + arg.directions; 
 })
 ipcRenderer.on('norecipe', (event, arg ) => {
