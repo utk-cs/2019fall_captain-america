@@ -55,4 +55,6 @@ ipcRenderer.on('random_recipe_return', (event, arg ) => {
 	}
 	directions.textContent = "Directions: " + dirString;
 	//directions.textContent = "Directions: " + arg.directions;
-    } 
+	 
+}
+})
