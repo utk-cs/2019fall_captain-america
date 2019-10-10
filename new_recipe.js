@@ -30,6 +30,8 @@ document.getElementById('add_recipe').addEventListener('click', function(){
     let ingString = ing.concat(i.toString());
     let dirString = dir.concat(i.toString());
 
+    let origin = document.getElementById('origin').value;
+
     while(document.getElementById(ingString).value !== ''){
 	ingredients[i-1] = document.getElementById(ingString).value;
 	i++;
@@ -56,5 +58,5 @@ document.getElementById('add_recipe').addEventListener('click', function(){
 
    // let ingredients = document.getElementById('ingredients').value;
     //let directions = document.getElementById('directions').value;
-    ipcRenderer.send('recipe', recipe_name, ingredients, directions);
+    ipcRenderer.send('recipe', recipe_name, ingredients, directions, origin);
 })
