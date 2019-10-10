@@ -6,14 +6,13 @@ function log(message){
     ipcRenderer.send('log', message)
 }
 
-let prefix = "Recipe: "; 
 //when main sends back a response message it will be received here
 //listens for button to be clicked and requests data form main
 document.getElementById('display_first_recipe').addEventListener('click', function(){
     ipcRenderer.send('first_recipe', "");
 })
 //displays random recipe into html file
-ipcRenderer.on('random_recipe_return', (event, arg ) => {
+ipcRenderer.on('first_recipe_return', (event, arg ) => {
 
     //if there are no recipes added yet, display a message 
     if(arg === 'empty'){
