@@ -40,7 +40,7 @@
       position: absolute;
       top: 50%;
       margin-left: 50%;
-      margin-right: -50%;
+      margin-right: 50%;
       width: 40%;
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
@@ -48,11 +48,9 @@
 
     .recipe-name {
       text-align: center;
+      margin-bottom: 4px;
     }
-
-    .ing-dir {
-      text-align: left;
-    }
+    
   </style>
 </head>
 
@@ -62,15 +60,16 @@
     <button class="button" onclick="location.href='basic.html'">Back</button>
   </div>
 
-  <div class="center ing-dir">
-    <div id='recipename'>
+  <div class="center">
+    <div class="recipe-name" id='recipename'>
+      <br>
     </div>
-    
+    <div id='origin'>
+    </div>
       <div id='ingredients'>
       </div>
       <div id='directions'>
       </div>
-
   </div>
 
   <script>

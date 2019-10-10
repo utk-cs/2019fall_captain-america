@@ -12,11 +12,13 @@ ipcRenderer.on('recipe', (event, arg ) => {
     let recipename = document.getElementById('recipename');
     let ingredients = document.getElementById('ingredients');
     let directions = document.getElementById('directions');
+    let origin = document.getElementById('origin');
     let ingString = '';
     let dirString = '';
 
     recipename.textContent = "Recipe: " + arg.recipename;
-    
+    origin.textContent = "Origin: " + arg.origin;
+
     for(let i = 0; i < arg.ingredients.length; i++){
 	if(i == arg.ingredients.length - 1){
 	    ingString += arg.ingredients[i];	   
@@ -43,6 +45,7 @@ ipcRenderer.on('norecipe', (event, arg ) => {
     let recipename = document.getElementById('recipename');
     let ingredients = document.getElementById('ingredients');
     let directions = document.getElementById('directions');
+    let origin = document.getElementById('origin');
     recipename.textContent = arg;
     ingredients.textContent = ""
     directions.textContent = ""

@@ -20,7 +20,9 @@ ipcRenderer.on('random_recipe_return', (event, arg ) => {
         let recipename = document.getElementById('recipename');
         let ingredients = document.getElementById('ingredients');
         let directions = document.getElementById('directions');
-        recipename.textContent = "No recipes added yet";
+        let origin = document.getElementById('origin');
+	recipename.textContent = "No recipes added yet";
+	origin.textContent = "";
         ingredients.textContent = "";
         directions.textContent = ""; 
     }
@@ -30,10 +32,12 @@ ipcRenderer.on('random_recipe_return', (event, arg ) => {
         let recipename = document.getElementById('recipename');
         let ingredients = document.getElementById('ingredients');
         let directions = document.getElementById('directions');
-        let ingString = '';
+        let origin = document.getElementById('origin');
+	let ingString = '';
 	let dirString = '';
 	recipename.textContent = arg.recipename;
-        
+        origin.textContent = arg.origin;
+
 	for(let i = 0; i < arg.ingredients.length; i++){
 	    if(i == arg.ingredients.length - 1){
 		ingString += arg.ingredients[i];

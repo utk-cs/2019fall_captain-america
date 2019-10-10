@@ -1,65 +1,111 @@
 <!--an html file for adding a new recipe to the app-->
 <html>
-<body>
+
+<head>
+	<style>
+		input[type=text] {
+			width: 100%;
+			padding: 6px 10px;
+			margin: 4px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+
+		.button {
+			background-color: #F3DBA4;
+			border: none;
+			color: black;
+			padding: 8px 20px;
+			display: block;
+			text-align: center;
+			font-size: 13px;
+			font: verdana;
+			cursor: default;
+			width: 150px;
+			margin-bottom: 4px;
+		}
+
+		.button:hover {
+			background-color: rgb(231, 193, 139);
+		}
+
+		.bottom-center {
+			margin: 0;
+			position: absolute;
+			text-align: center;
+			vertical-align: middle;
+			overflow: hidden;
+			left: 50%;
+			margin-right: -50%;
+			-ms-transform: translate(-50%, -50%);
+			transform: translate(-50%, 0%);
+		}
+
+		.center {
+			font-family: verdana;
+			font-size: 13px;
+			position: absolute;
+			margin-top: 4px;
+			margin-left: 50%;
+			margin-right: 50%;
+			width: 60%;
+			-ms-transform: translate(-50%, -50%);
+			transform: translate(-50%, 0%);
+		}
+
+		.recipe-name {
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body class="center">
 	<form>
-		Recipe Name: <input type="text" id = recipe_name> 
+		Recipe Name: <input type="text" id=recipe_name>
 		<br>
 		<br>
-		Ingredients: <input type="text" id = ingredients1>
-		<br>
-		Ingredients: <input type="text" id = ingredients2>
-		<br>
-		Ingredients: <input type="text" id = ingredients3>
-		<br> 
-		Ingredients: <input type="text" id = ingredients4>
-		<br>
-		Ingredients: <input type="text" id = ingredients5>
-		<br>
-		Ingredients: <input type="text" id = ingredients6>
-		<br>
-		Ingredients: <input type="text" id = ingredients7>
-		<br>
-		Ingredients: <input type="text" id = ingredients8>
-		<br>
-		Ingredients: <input type="text" id = ingredients9>
-		<br>
-		Ingredients: <input type="text" id = ingredients10>
+		Origin (Spanish, French, Italian, etc.): <input type="text" id = origin>
 		<br>
 		<br>
-		Directions: <input type="text" id = directions1> 
+		Ingredients: <input type="text" id=ingredients1>
+		<input type="text" id=ingredients2>
+		<input type="text" id=ingredients3>
+		<input type="text" id=ingredients4>
+		<input type="text" id=ingredients5>
+		<input type="text" id=ingredients6>
+		<input type="text" id=ingredients7>
+		<input type="text" id=ingredients8>
+		<input type="text" id=ingredients9>
+		<input type="text" id=ingredients10>
 		<br>
-		Directions: <input type="text" id = directions2>
 		<br>
-		Directions: <input type="text" id = directions3>
-		<br>
-		Directions: <input type="text" id = directions4>
-		<br>
-		Directions: <input type="text" id = directions5>
-		<br>
-		Directions: <input type="text" id = directions6>
-		<br>
-		Directions: <input type="text" id = directions7>
-		<br>
-		Directions: <input type="text" id = directions8>
-		<br>
-		Directions: <input type="text" id = directions9>
-		<br>
-		Directions: <input type="text" id = directions10>
+		Directions: <input type="text" id=directions1>
+		<input type="text" id=directions2>
+		<input type="text" id=directions3>
+		<input type="text" id=directions4>
+		<input type="text" id=directions5>
+		<input type="text" id=directions6>
+		<input type="text" id=directions7>
+		<input type="text" id=directions8>
+		<input type="text" id=directions9>
+		<input type="text" id=directions10>
 		<br>
 		<br>
 	</form>
-	<div id='recipe_exists'>
+	<div style="text-align:center; margin-bottom: 8px;" id='recipe_exists'>
 	</div>
-<!---
+	<!---
 <button id = "add_recipe"  onclick="location.href='basic.html'"  value= "test">Add Recipe</button> </br>
 	-->
-<button id = "add_recipe"  value= "test">Add Recipe</button> </br>
-<input type="button" onclick="location.href='basic.html'" value="Back"> 
+	<div class="bottom-center">
+		<button class="button" id="add_recipe" value="test">Add Recipe</button>
+		<button class="button" onclick="location.href='basic.html'">Back</button>
+	</div>
 </body>
 <script>
 	require('./new_recipe.js')
 </script>
+
 </html>
-
-
-
