@@ -7,11 +7,13 @@ fs.open('recipeDatabase.txt', 'a+', function(err, file) {
 });
  
 class Recipe{
-	constructor(name, ing, dir, orig){
+	constructor(name, ing, dir, orig, prep, course){
 		this.recipename = name;
 		this.ingredients = ing;
 		this.directions = dir;
 		this.origin = orig;
+		this.prep = prep;
+		this.course = course;
 	}
 	get name(){
 		return this.recipename;
@@ -86,11 +88,11 @@ ipcMain.on('browse-request', (event, arg) => {
 
 
 //listens for new recipe to add
-ipcMain.on('recipe', (event, recipe_name, ingredients, directions, origin) => {
+ipcMain.on('recipe', (event, recipe_name, ingredients, directions, origin, prep, course) => {
     //if recipe name does not exist add it to the map
     if(RecipeMap.has(recipe_name) == false){
-        let newrecipe = new Recipe(recipe_name, ingredients, directions, origin);
-        RecipeMap.set(recipe_name, newrecipe);
+        let newrecipe = new Recipe(recipe_name, ingredients, directions, origin, prep, course);
+	RecipeMap.set(recipe_name, newrecipe);
         event.sender.send('recipe_exists', false);
     }
     //if it does exist send back an error

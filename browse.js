@@ -36,6 +36,8 @@ ipcRenderer.on('first_recipe_return', (event, arg ) => {
 	let dirString = '';
 	recipename.textContent = arg.recipename;
         origin.textContent = arg.origin;
+	prep.textContent = arg.prep;
+	course.textContent = arg.course;
 
 	for(let i = 0; i < arg.ingredients.length; i++){
 	    if(i == arg.ingredients.length - 1){
