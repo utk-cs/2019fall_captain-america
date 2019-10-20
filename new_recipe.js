@@ -11,9 +11,17 @@ ipcRenderer.on('recipe_exists', (event, arg) => {
     let recipe_exists = document.getElementById('recipe_exists');
     if(arg === true){
         recipe_exists.textContent = 'Recipe already exists enter in new recipe name';
+    	var elements = document.getElementsByTagName("input");
+	for (var i=0; i < elements.length; i++) {
+		elements[i].value = "";
+	}
     }
     else{
         recipe_exists.textContent = 'Recipe added successfully';
+    	var elements = document.getElementsByTagName("input");
+	for (var i=0; i < elements.length; i++) {
+            elements[i].value = "";
+	}
     }
 })
 
