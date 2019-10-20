@@ -13,15 +13,15 @@ ipcRenderer.on('recipe', (event, arg ) => {
     let ingredients = document.getElementById('ingredients');
     let directions = document.getElementById('directions');
     let origin = document.getElementById('origin');
-    //let prep = document.getElementById('prep');
-    //let course = document.getElementById('course');
+    let prep = document.getElementById('prep');
+    let course = document.getElementById('course');
     let ingString = '';
     let dirString = '';
 
     recipename.textContent = arg.recipename;
-    //origin.textContent = "Origin: " + arg.origin;
-    //prep.textContent = "Prep Time: " + arg.prep;
-    //course.textContent = "Course: " + arg.course;
+    origin.textContent = arg.origin;
+    prep.textContent = arg.prep;
+    course.textContent = arg.course;
 
     for(let i = 0; i < arg.ingredients.length; i++){
 	if(i == arg.ingredients.length - 1){
@@ -50,11 +50,14 @@ ipcRenderer.on('norecipe', (event, arg ) => {
     let ingredients = document.getElementById('ingredients');
     let directions = document.getElementById('directions');
     let origin = document.getElementById('origin');
-    //let prep = document.getElementById('prep');
-    //let course = document.getElementById('course');
+    let prep = document.getElementById('prep');
+    let course = document.getElementById('course');
     recipename.textContent = arg;
-    ingredients.textContent = ""
-    directions.textContent = ""
+    origin.textContent = "";
+    prep.textContent = "";
+    course.textContent = "";
+    ingredients.textContent = "";
+    directions.textContent = "";
 })
 //gets text in the search bar upon click and sends it to main
 document.getElementById('search-request').addEventListener('click', function(){

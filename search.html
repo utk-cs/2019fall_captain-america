@@ -1,23 +1,78 @@
 <!DOCTYPE html>
 <html>
-  <body>
-      <input type= "text" id = "search"/></br>
-      <button id = "search-request" value= "test">Search</button> </br>
-      <input type="button" onclick="location.href='basic.html'" value="Back">
+
+    <head>
+        <style>
+          input[type=text] {
+            width: 100%;
+            padding: 6px 10px;
+            margin: 4px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+          }
+      
+          .button {
+            margin: auto;
+            background-color: #F3DBA4;
+            border: none;
+            color: black;
+            padding: 8px 20px;
+            display: block;
+            text-align: center;
+            font-size: 13px;
+            font: verdana;
+            cursor: default;
+            width: 150px;
+            margin-bottom: 4px;
+          }
+      
+          .button:hover {
+            background-color: rgb(231, 193, 139);
+          }
+          
+          .center {
+            font-family: verdana;
+            font-size: 13px;
+            position: absolute;
+            vertical-align: middle;
+            text-align: center;
+            overflow: hidden;
+            margin-top: 4px;
+            margin-left: 50%;
+            margin-right: 50%;
+            width: 60%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, 0%);
+          }
+        </style>
+      </head>
+
+  <body class="center">
+      <input type= "text" id = "search"/></br></br>
+      <button class="button" id = "search-request" value= "test">Search</button> </br>
+      <button class="button" onclick="location.href='basic.html'">Back</button> </br>
       <style>
           table, th, td {
             border: 1px solid black;
           }
     </style>
-     <table style = "width:100%"">
+     <table style = "width:100%">
       <tr>
-      <th>Recipe Name</th>  
+      <th>Recipe Name</th>
+      <th> Origin</th>
+      <th> Prep Time</th>
+      <th> Course</th>
       <th> Ingredients</th>
       <th> Directions</th>
       </tr>
       
       <tr>
       <td> <div id='recipename'></div>  </td>
+      <td> <div id='origin'></div> </td>
+      <td> <div id='prep'></div> </td>
+      <td> <div id='course'></div> </td>
       <td>  <div id='ingredients'></div> </td>
       <td>  <div id='directions'></div> </td>
       </tr>
