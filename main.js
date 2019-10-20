@@ -131,7 +131,8 @@ ipcMain.on('random_recipe', (event, arg) => {
 
 var map_iterator = RecipeMap.entries();
 //event for handling random recipe request
-ipcMain.on('first_recipe', (event, arg) => {
+//commenting out lots of code to try browse test
+/*ipcMain.on('first_recipe', (event, arg) => {
 
     //if the map is empty send back a message saying so
     if (RecipeMap.size == 0){
@@ -146,4 +147,17 @@ ipcMain.on('first_recipe', (event, arg) => {
         event.sender.send('first_recipe_return', RecipeMap.get(recipe_key));
     }
 })
+*/
 
+
+ipcMain.on('first_recipe', (event, arg) => {
+
+    var displayrecipe = RecipeMap
+    console.log(displayrecipe)
+    var a = displayrecipe;
+    event.sender.send('first_recipe', displayrecipe);
+    
+
+//event.sender.send('norecipe', 'No Recipe Exists')
+
+})

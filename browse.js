@@ -12,7 +12,7 @@ document.getElementById('display_first_recipe').addEventListener('click', functi
     ipcRenderer.send('first_recipe', "");
 })
 //displays random recipe into html file
-ipcRenderer.on('first_recipe_return', (event, arg ) => {
+ipcRenderer.on('first_recipe', (event, arg ) => {
 
     //if there are no recipes added yet, display a message 
     if(arg === 'empty'){
@@ -62,4 +62,16 @@ ipcRenderer.on('first_recipe_return', (event, arg ) => {
 	//directions.textContent = "Directions: " + arg.directions;
 	 
 }
+})
+
+ipcMain.on('first_recipe', (event, arg) => {
+
+        var displayrecipe = RecipeMap
+		console.log(displayrecipe)
+        var a = displayrecipe;
+        event.sender.send('first_recipe', displayrecipe);
+        
+    
+    //event.sender.send('norecipe', 'No Recipe Exists')
+	
 })
