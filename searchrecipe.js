@@ -29,12 +29,21 @@ ipcRenderer.on('recipe', (event, arg ) => {
         var cell1 = document.createElement('td');
         var cell2 = document.createElement('td');
         var cell3 = document.createElement('td');
+        var cell4 = document.createElement('td');
+        var cell5 = document.createElement('td');
+        var cell6 = document.createElement('td');
         cell1.innerHTML = "Recipe Name";
         cell2.innerHTML = "Ingredients";
         cell3.innerHTML = "Directions";
+        cell4.innerHTML = "Origin";
+        cell5.innerHTML = "Prep-time";
+        cell6.innerHTML = "Course";
         tr.appendChild(cell1);
         tr.appendChild(cell2);
         tr.appendChild(cell3);
+        tr.appendChild(cell4);
+        tr.appendChild(cell5);
+        tr.appendChild(cell6);
         table.appendChild(tr);
         
         //for every recipe returned make a new table row
@@ -42,9 +51,12 @@ ipcRenderer.on('recipe', (event, arg ) => {
             let ingString = '';
             let dirString = '';
             var tr = document.createElement('tr');
-            var cell1 = document.createElement('td');
-            var cell2 = document.createElement('td');
-            var cell3 = document.createElement('td');
+            var recipe_cell = document.createElement('td');
+            var ingredient_cell = document.createElement('td');
+            var direction_cell = document.createElement('td');
+            var origin_cell = document.createElement('td');
+            var preptime_cell = document.createElement('td');
+            var course_cell = document.createElement('td');
         
             //origin.textContent = arg[i].origin;
             //prep.textContent = arg[i].prep;
@@ -70,14 +82,20 @@ ipcRenderer.on('recipe', (event, arg ) => {
             }	
    
             //fill cells with appropriate data
-            cell1.innerHTML = arg[i].recipename;
-            cell2.innerHTML = ingString;
-            cell3.innerHTML = dirString;
+            recipe_cell.innerHTML = arg[i].recipename;
+            ingredient_cell.innerHTML = ingString;
+            direction_cell.innerHTML = dirString;
+            origin_cell.innerHTML = arg[i].origin;
+            preptime_cell.innerHTML = arg[i].prep;
+            course_cell.innerHTML = arg[i].course;
             
             //add rows to the table
-            tr.appendChild(cell1);
-            tr.appendChild(cell2);
-            tr.appendChild(cell3);
+            tr.appendChild(recipe_cell);
+            tr.appendChild(ingredient_cell);
+            tr.appendChild(direction_cell);
+            tr.appendChild(origin_cell);
+            tr.appendChild(preptime_cell);
+            tr.appendChild(course_cell);
             table.appendChild(tr);
         }
     }
