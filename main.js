@@ -107,10 +107,19 @@ ipcMain.on('search-request', (event, arg) => {
        // }
     //});
 
-    console.log(itemsret);
-    
+    //removes duplicate items
+    //inserts each element in hashtable after it checks for its existence
+    //in the hash table
+    var seen = {};
+    var items_no_duplicates = [];
+    items_no_duplicates = itemsret.filter(function(item) {
+        return seen.hasOwnProperty(item.recipename)
+        ? false : (seen[item.recipename] = true);
+    });
+ 
+    console.log(items_no_duplicates)
     //sends array of matching items to searchrecipe
-    event.sender.send('recipe', itemsret);
+    event.sender.send('recipe', items_no_duplicates);
 
 })
 
