@@ -19,14 +19,14 @@ ipcRenderer.on('random_recipe_return', (event, arg ) => {
         let ingredients = document.getElementById('ingredients');
         let directions = document.getElementById('directions');
         let origin = document.getElementById('origin');
-	let prep = document.getElementById('prep');
-	let course = document.getElementById('course');
-	recipename.textContent = "No recipes added yet";
+		let prep = document.getElementById('prep');
+		let course = document.getElementById('course');
+		recipename.textContent = "No recipes added yet";
         ingredients.textContent = "";
         directions.textContent = ""; 
         origin.textContent = "";
-	prep.textContent = "";
-	course.textContent = "";
+		prep.textContent = "";
+		course.textContent = "";
     }
     
     //if there are recipes, then display the recipe
@@ -35,33 +35,34 @@ ipcRenderer.on('random_recipe_return', (event, arg ) => {
         let ingredients = document.getElementById('ingredients');
         let directions = document.getElementById('directions');
         let origin = document.getElementById('origin');
-	let prep = document.getElementById('prep');
-	let course = document.getElementById('course');
-	let ingString = "";
-	let dirString = "";
+		let prep = document.getElementById('prep');
+		let course = document.getElementById('course');
+		let ingString = "";
+		let dirString = "";
 	recipename.textContent = arg.recipename;
 	origin.textContent = "Origin: " + arg.origin;
 	prep.textContent = "Prep Time: " + arg.prep;
 	course.textContent = "Course: " + arg.course;
 	    
         for(let i = 0; i < arg.ingredients.length; i++){
-	    if(i == arg.ingredients.legnth - 1){
-		ingString += arg.ingredients[i];
-	    }
-	    else{
-		ingString += arg.ingredients[i] + ", ";
-	    }
-	}
+			if(i == arg.ingredients.legnth - 1){
+				ingString += arg.ingredients[i];
+			}
+			else{
+				ingString += arg.ingredients[i] + ", ";
+			}
+		}
 	ingredients.textContent = "Ingredients: " + ingString;
 
-	for(let i = 0; i < arg.directions.length; i++){
-	    if(i == arg.directions.length - 1){
-		dirString += arg.directions[i];
-	    }
-	    else{
-		dirString += arg.directions[i] + ", ";
-	    }
-	}
+		for(let i = 0; i < arg.directions.length; i++){
+			if(i == arg.directions.length - 1){
+			dirString += arg.directions[i];
+			}
+			else{
+			dirString += arg.directions[i] + ", ";
+			}
+		}
+		
         directions.textContent = "Directions: " + dirString;
     } 
 })
