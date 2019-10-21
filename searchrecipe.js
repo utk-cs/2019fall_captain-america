@@ -89,7 +89,9 @@ document.getElementById('search-request').addEventListener('click', function(){
     let search = document.getElementById('search').value;
     let ingredients_checkbox = document.getElementById('ingredient_checkbox').checked;
     let recipename_checkbox = document.getElementById('recipename_checkbox').checked;
-    
+    let preptime_checkbox = document.getElementById('preptime_checkbox').checked;
+    let origin_checkbox = document.getElementById('origin_checkbox').checked;
+    let course_checkbox = document.getElementById('course_checkbox').checked;
     //creating a checkbox code for to append to the search string so that the search funciton
     //knows which values to search for
     //checkbox_code = "ingredient checkbox value, recipe_name checkbox value"
@@ -104,8 +106,24 @@ document.getElementById('search-request').addEventListener('click', function(){
     else{
         checkbox_code = checkbox_code + "0";
     }
+    if(preptime_checkbox === true) 
+        checkbox_code = checkbox_code + "1";
+    else{
+        checkbox_code = checkbox_code + "0";
+    }
+    if(origin_checkbox === true) 
+        checkbox_code = checkbox_code + "1";
+    else{
+        checkbox_code = checkbox_code + "0";
+    }
+    if(course_checkbox === true) 
+        checkbox_code = checkbox_code + "1";
+    else{
+        checkbox_code = checkbox_code + "0";
+    }
+    
     //if no checkbox is selected search by everything
-    if(checkbox_code === "00") checkbox_code = "11";
+    if(checkbox_code === "00000") checkbox_code = "11111";
     ipcRenderer.send('search-request', checkbox_code + search);
     console.log(checkbox_code + search);
 })

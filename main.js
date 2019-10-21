@@ -70,32 +70,47 @@ ipcMain.on('search-request', (event, arg) => {
    
     var itemsret = [];
     //separting arguement to get the check box code and value typed into search field
-    var checkbox_code = arg.slice(0,2);
-    var search = arg.slice(2);
-
-
-    //searches the map based on the recipename and pushes matching items 
-    //onto array
-    if(checkbox_code[1] === "1"){
-        RecipeMap.forEach(function (item, index){            
-            if(item.recipename === search){
-                itemsret.push(item);
-        }
-        });
-    }
-
-
-    //searches the map based on the ingredients and pushes matching items 
-    //onto array
-    if(checkbox_code[0] === "1"){
-        RecipeMap.forEach(function (item, index){
+    //checkbox = ingredients, recipename, preptime, origin, course
+    var checkbox_code = arg.slice(0,5);
+    var search = arg.slice(5);
+    
+    RecipeMap.forEach(function (item, index){   
+git 
+        //ingredients
+        if(checkbox_code[0] === "1"){
             for(var i = 0; i < item.ingredients.length; i++){             
                 if(item.ingredients[i] === search){
                     itemsret.push(item);
                 }
             }
-        });
-    }
+        }
+        //recipe name         
+        if(checkbox_code[1] === "1"){
+            if(item.recipename === search){
+                itemsret.push(item);
+            }
+        }
+
+        //preptime
+        if(checkbox_code[2] === "1"){
+            if(item.prep >= search){
+                itemsret.push(item);
+            }
+        }
+        //origin
+        if(checkbox_code[3] === "1"){
+            if(item.origin === search){
+                itemsret.push(item);
+            }
+        }
+        //course
+        if(checkbox_code[4] === "1"){
+            if(item.course === search){
+                itemsret.push(item);
+            }
+        }
+
+    });
 
     //searches the map based on the directions and pushes matching items 
     //onto array
