@@ -75,7 +75,6 @@ ipcMain.on('search-request', (event, arg) => {
     var search = arg.slice(5);
     
     RecipeMap.forEach(function (item, index){   
-git 
         //ingredients
         if(checkbox_code[0] === "1"){
             for(var i = 0; i < item.ingredients.length; i++){             
