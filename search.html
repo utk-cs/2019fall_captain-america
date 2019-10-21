@@ -2,6 +2,9 @@
 <html>
 
     <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type = "text/javascript">
+        </script>
         <style>
           input[type=text] {
             width: 100%;
@@ -60,26 +63,7 @@
             border: 1px solid black;
           }
     </style>
-     <table style = "width:100%">
-      <tr>
-      <th>Recipe Name</th>
-      <th> Origin</th>
-      <th> Prep Time</th>
-      <th> Course</th>
-      <th> Ingredients</th>
-      <th> Directions</th>
-      </tr>
-      
-      <tr>
-      <td> <div id='recipename'></div>  </td>
-      <td> <div id='origin'></div> </td>
-      <td> <div id='prep'></div> </td>
-      <td> <div id='course'></div> </td>
-      <td>  <div id='ingredients'></div> </td>
-      <td>  <div id='directions'></div> </td>
-      </tr>
-
-     </table>
+    <table id="tableId"></table>
 
       <script>
         require('./searchrecipe.js')
