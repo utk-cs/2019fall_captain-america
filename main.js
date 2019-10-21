@@ -67,15 +67,51 @@ const { ipcMain } = require('electron')
 //listens for event "search request"
 //gets passed arg which is the text in the search request
 ipcMain.on('search-request', (event, arg) => {
-    //if the map contains the specified recipe send back the data
-    if(RecipeMap.has(arg) == true){
-            var displayrecipe = RecipeMap.get(arg)
-            event.sender.send('recipe', displayrecipe);
+   
+    var itemsret = [];
+    //separting arguement to get the check box code and value typed into search field
+    var checkbox_code = arg.slice(0,2);
+    var search = arg.slice(2);
+
+
+    //searches the map based on the recipename and pushes matching items 
+    //onto array
+    if(checkbox_code[1] === "1"){
+        RecipeMap.forEach(function (item, index){            
+            if(item.recipename === search){
+                itemsret.push(item);
         }
-    //else send an message saying the recipe does not exist
-    else{
-    event.sender.send('norecipe', 'No Recipe Exists')
+        });
     }
+
+
+    //searches the map based on the ingredients and pushes matching items 
+    //onto array
+    if(checkbox_code[0] === "1"){
+        RecipeMap.forEach(function (item, index){
+            for(var i = 0; i < item.ingredients.length; i++){             
+                if(item.ingredients[i] === search){
+                    itemsret.push(item);
+                }
+            }
+        });
+    }
+
+    //searches the map based on the directions and pushes matching items 
+    //onto array
+    //RecipeMap.forEach(function (item, index){
+     //   for(var i = 0; i < item.directions.length; i++){             
+      //      if(item.directions[i] === search){
+        //        itemsret.push(item);
+          //  }
+       // }
+    //});
+
+    console.log(itemsret);
+    
+    //sends array of matching items to searchrecipe
+    event.sender.send('recipe', itemsret);
+
 })
 
 //listens for a browse request

@@ -62,7 +62,26 @@ ipcRenderer.on('norecipe', (event, arg ) => {
 //gets text in the search bar upon click and sends it to main
 document.getElementById('search-request').addEventListener('click', function(){
     let search = document.getElementById('search').value;
-    ipcRenderer.send('search-request', search);
+    let ingredients_checkbox = document.getElementById('ingredient_checkbox').checked;
+    let recipename_checkbox = document.getElementById('recipename_checkbox').checked;
+    //creating a checkbox code for to append to the search string so that the search funciton
+    //knows which values to search for
+    //checkbox_code = "ingredient checkbox value, recipe_name checkbox value"
+    var checkbox_code = "";
+    if(ingredients_checkbox === true) 
+        checkbox_code = checkbox_code + "1";
+    else{
+        checkbox_code = checkbox_code + "0";
+    }
+    if(recipename_checkbox === true) 
+        checkbox_code = checkbox_code + "1";
+    else{
+        checkbox_code = checkbox_code + "0";
+    }
+    //if no checkbox is selected search by everything
+    if(checkbox_code === "00") checkbox_code = "11";
+    ipcRenderer.send('search-request', checkbox_code + search);
+    console.log(checkbox_code + search);
 })
 
 //listens for event "search request"
