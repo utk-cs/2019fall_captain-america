@@ -35,11 +35,18 @@ class Recipe{
 	}
 };
 
+function readFile(file) {
+    fs.readFileSync(file, 'utf8', function(err, contents) {
+        if (err) throw err;
+        console.log(contents);
+        console.log('hello');
+    });
+}
+
 function writeMap(value, key, map) {
-    fs.appendFile('recipeDatabase.txt', key + ': \n\t' + value.ingredients + '\n\t' + value.directions + '\n\n', function(err) {
+    fs.writeFile('recipeDatabase.txt', key + ': \n\t' + value.course + '\n\t' + value.prep + '\n\t' + value.orig + '\n\t' + value.ingredients + '\n\t' + value.directions + '\n\n', function(err) {
         if (err) throw err;
     });
-    console.log(`${key}: \n\t${value.ingredients}\n\t${value.directions}\n\n`);
 }
 
 app.on('ready', () => {
