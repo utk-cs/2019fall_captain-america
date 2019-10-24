@@ -2,7 +2,7 @@ const {app, BrowserWindow } = require('electron');
 let win;
 var RecipeMap = new Map();
 var fs = require('fs');
-fs.open('recipeDatabase.txt', 'a+', function(err, file) {
+fs.open('recipeDatabase.txt', 'r+', function(err, file) {
     if (err) throw err;
 });
  
@@ -35,21 +35,67 @@ class Recipe{
 	}
 };
 
-function readFile(file) {
-    fs.readFileSync(file, 'utf8', function(err, contents) {
+function readTextFile(file) {
+    try {
+        var data = fs.readFileSync(file, 'utf8').toString().split('\n');
+        console.log(data);
+        console.log(data.length);
+    } catch(e) {
+        console.log('error:', e.stack);
+    }
+    
+    if (data[0] != '') {
+        for (var i = 0; i < data.length; i++) {
+            let recipe_name = data[i];
+            i++;
+            if (i >= data.length) break; // error checking? in case the file is formatted incorrectly?
+            let course = data[i];
+            i++;
+            if (i >= data.length) break;
+            let prep = data[i];
+            i++;
+            if (i >= data.length) break;
+            let origin = data[i];
+            i++;
+            if (i >= data.length) break;
+            let ingredients = data[i].split(',');
+            i++;
+            if (i >= data.length) break;
+            let directions = data[i].split(',');
+            i++;
+            if (i >= data.length) break;
+            i++; // this last one is for the blank line(s?) that separates recipes
+            if (i >= data.length) break;
+
+            let newrecipe = new Recipe(recipe_name, ingredients, directions, origin, prep, course);
+            RecipeMap.set(recipe_name, newrecipe);
+            console.log(newrecipe);
+        }
+    }
+    /*fs.readTextFile(file, 'utf8', function(err, contents) {
         if (err) throw err;
         console.log(contents);
-        console.log('hello');
-    });
+        console.log(file.length);
+    });*/
 }
 
-function writeMap(value, key, map) {
-    fs.writeFile('recipeDatabase.txt', key + ': \n\t' + value.course + '\n\t' + value.prep + '\n\t' + value.orig + '\n\t' + value.ingredients + '\n\t' + value.directions + '\n\n', function(err) {
+function writeMap(map) {
+    fs.writeFile('recipeDatabase.txt', '', function(err) { // clear the file because we're about to rewrite it
+        if (err) throw err;
+    });
+    map.forEach(writeRecipe);
+}
+
+function writeRecipe(value, key, map) {
+    fs.appendFile('recipeDatabase.txt', key + '\n' + value.course + '\n' + value.prep + '\n' + value.origin + '\n' + value.ingredients + '\n' + value.directions + '\n\n', function(err) {
         if (err) throw err;
     });
 }
 
 app.on('ready', () => {
+    // read in the file and sets up the map with previously saved recipes
+    //readTextFile('./recipeDatabase.txt');
+
     // This creates a new BrowserWindow and sets win to be a reference to that new window.
     win = new BrowserWindow({
         width: 600, // Sets the width by pixel count
@@ -63,7 +109,8 @@ app.on('ready', () => {
     win.loadFile('basic.html');
 
     win.on('close', () => {
-        RecipeMap.forEach(writeMap);
+        console.log(RecipeMap);
+        writeMap(RecipeMap);
         win = null;
     });
 });
@@ -158,7 +205,7 @@ ipcMain.on('recipe', (event, recipe_name, ingredients, directions, origin, prep,
     //if recipe name does not exist add it to the map
     if(RecipeMap.has(recipe_name) == false){
         let newrecipe = new Recipe(recipe_name, ingredients, directions, origin, prep, course);
-	RecipeMap.set(recipe_name, newrecipe);
+	    RecipeMap.set(recipe_name, newrecipe);
         event.sender.send('recipe_exists', false);
     }
     //if it does exist send back an error
