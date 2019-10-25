@@ -54,12 +54,16 @@
 
   <body class="center">
       <input type= "text" id = "search"/></br></br>
-      Filters:   Ingredients <input type="checkbox" id="ingredient_checkbox" value="Bike"> 
-      Recipe Name<input type="checkbox" id="recipename_checkbox" value="Bike"> 
-      Prep-time<input type="checkbox" id="preptime_checkbox" value="Bike">
-      Origin<input type="checkbox" id="origin_checkbox" value="Bike"> 
-      Course<input type="checkbox" id="course_checkbox" value="Bike"> 
-      <button class="button" id = "search-request" value= "test">Search</button> </br>
+      Filters:   
+      <form style="text-align: left; width: 30%; margin-left: 35%;">
+        <input type="radio" name="filter" id="recipename_checkbox" value="Bike" checked>Recipe Name</br>
+        <input type="radio" name="filter" id="ingredient_checkbox" value="Bike">Ingredients</br>
+        <input type="radio" name="filter" id="preptime_checkbox" value="Bike">Prep-time</br>
+        <input type="radio" name="filter" id="origin_checkbox" value="Bike">Origin</br>
+        <input type="radio" name="filter" id="course_checkbox" value="Bike">Course</br>
+      </form> </br>
+
+      <button class="button" id = "search-request" value= "test">Search</button>
       <button class="button" onclick="location.href='basic.html'">Back</button> </br>
       <style>
           table, th, td {
