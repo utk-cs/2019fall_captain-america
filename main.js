@@ -44,18 +44,18 @@ function readTextFile(file) {
         console.log('error:', e.stack);
     }
     
-    if (data[0] != '') {
+    if (data[0] != '') { // if its an empty file there's nothing to read
         for (var i = 0; i < data.length; i++) {
             let recipe_name = data[i];
             i++;
             if (i >= data.length) break; // error checking? in case the file is formatted incorrectly?
-            let course = data[i];
+            let origin = data[i];
             i++;
             if (i >= data.length) break;
             let prep = data[i];
             i++;
             if (i >= data.length) break;
-            let origin = data[i];
+            let course = data[i];
             i++;
             if (i >= data.length) break;
             let ingredients = data[i].split(',');
@@ -87,7 +87,7 @@ function writeMap(map) {
 }
 
 function writeRecipe(value, key, map) {
-    fs.appendFile('recipeDatabase.txt', key + '\n' + value.course + '\n' + value.prep + '\n' + value.origin + '\n' + value.ingredients + '\n' + value.directions + '\n\n', function(err) {
+    fs.appendFile('recipeDatabase.txt', key + '\n' + value.origin + '\n' + value.prep + '\n' + value.course + '\n' + value.ingredients + '\n' + value.directions + '\n\n', function(err) {
         if (err) throw err;
     });
 }
