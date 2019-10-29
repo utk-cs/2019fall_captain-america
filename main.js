@@ -44,18 +44,18 @@ function readTextFile(file) {
         console.log('error:', e.stack);
     }
     
-    if (data[0] != '') {
+    if (data[0] != '') { // if its an empty file there's nothing to read
         for (var i = 0; i < data.length; i++) {
             let recipe_name = data[i];
             i++;
             if (i >= data.length) break; // error checking? in case the file is formatted incorrectly?
-            let course = data[i];
+            let origin = data[i];
             i++;
             if (i >= data.length) break;
             let prep = data[i];
             i++;
             if (i >= data.length) break;
-            let origin = data[i];
+            let course = data[i];
             i++;
             if (i >= data.length) break;
             let ingredients = data[i].split(',');
@@ -87,7 +87,7 @@ function writeMap(map) {
 }
 
 function writeRecipe(value, key, map) {
-    fs.appendFile('recipeDatabase.txt', key + '\n' + value.course + '\n' + value.prep + '\n' + value.origin + '\n' + value.ingredients + '\n' + value.directions + '\n\n', function(err) {
+    fs.appendFile('recipeDatabase.txt', key + '\n' + value.origin + '\n' + value.prep + '\n' + value.course + '\n' + value.ingredients + '\n' + value.directions + '\n\n', function(err) {
         if (err) throw err;
     });
 }
@@ -131,34 +131,42 @@ ipcMain.on('search-request', (event, arg) => {
     RecipeMap.forEach(function (item, index){   
         //ingredients
         if(checkbox_code[0] === "1"){
-            for(var i = 0; i < item.ingredients.length; i++){             
-                if(item.ingredients[i] === search){
+            for(var i = 0; i < item.ingredients.length; i++){  
+                var string1 = item.ingredients[i].toUpperCase();
+                var string2 = search.toUpperCase();           
+                if(string1.includes(string2)){
                     itemsret.push(item);
                 }
             }
         }
         //recipe name         
         if(checkbox_code[1] === "1"){
-            if(item.recipename === search){
+            var string1 = item.recipename.toUpperCase();
+            var string2 = search.toUpperCase();    
+            if(string1.includes(string2)){
                 itemsret.push(item);
             }
         }
 
         //preptime
         if(checkbox_code[2] === "1"){
-            if(item.prep >= search){
+            if(item.prep <= search){
                 itemsret.push(item);
             }
         }
         //origin
         if(checkbox_code[3] === "1"){
-            if(item.origin === search){
+            var string1 = item.origin.toUpperCase();
+            var string2 = search.toUpperCase();  
+            if(string1.includes(string2)){
                 itemsret.push(item);
             }
         }
         //course
         if(checkbox_code[4] === "1"){
-            if(item.course === search){
+            var string1 = item.course.toUpperCase();
+            var string2 = search.toUpperCase();  
+            if(string1.includes(string2)){
                 itemsret.push(item);
             }
         }
@@ -243,34 +251,12 @@ ipcMain.on('random_recipe', (event, arg) => {
 })
 
 var map_iterator = RecipeMap.entries();
-//event for handling random recipe request
-//commenting out lots of code to try browse test
-/*ipcMain.on('first_recipe', (event, arg) => {
-
-    //if the map is empty send back a message saying so
-    if (RecipeMap.size == 0){
-        event.sender.send('first_recipe_return', 'empty');
-        console.log(RecipeMap.size);
-    }
-    //if the map is not empty call random key function
-    else{
-        //call random recipe function and get random recipe key
-        var recipe_key = map_iterator.next();
-        //send random recipe to random.js to display
-        event.sender.send('first_recipe_return', RecipeMap.get(recipe_key));
-    }
-})
-*/
 
 
 ipcMain.on('first_recipe', (event, arg) => {
-
-    var displayrecipe = RecipeMap
-    console.log(displayrecipe)
-    var a = displayrecipe;
-    event.sender.send('first_recipe', displayrecipe);
-    
-
-//event.sender.send('norecipe', 'No Recipe Exists')
-
+    var imsorry = [];
+    RecipeMap.forEach(function (item, index){ 
+        imsorry.push(item);
+    })
+    event.sender.send('first_recipe', imsorry);
 })

@@ -14,70 +14,95 @@ document.getElementById('display_first_recipe').addEventListener('click', functi
 //displays random recipe into html file
 ipcRenderer.on('first_recipe', (event, arg ) => {
 
-    //if there are no recipes added yet, display a message 
-    if(arg === 'empty'){
-        let recipename = document.getElementById('recipename');
-        let ingredients = document.getElementById('ingredients');
-        let directions = document.getElementById('directions');
-        let origin = document.getElementById('origin');
-	let prep = document.getElementById('prep');
-	let course = document.getElementById('course');
-	recipename.textContent = "No recipes added yet";
-	origin.textContent = "";
-	prep.textContent = "";
-	course.textContent = "";
-        ingredients.textContent = "";
-        directions.textContent = ""; 
+	log(arg[0].recipename);
+    console.log(arg);
+    
+    //getting a handle on the table and clearing it
+    let table = document.getElementById('tableId');
+    table.innerHTML = "";
+    if(arg.length === 0){
+        var tr = document.createElement('tr');
+        var cell1 = document.createElement('td');
+        cell1.innerHTML = "No recipes found";
+        tr.appendChild(cell1);
+        table.appendChild(tr);
     }
-    
-    //if there are recipes, then display the recipe
-    else{
-        let recipename = document.getElementById('recipename');
-        let ingredients = document.getElementById('ingredients');
-        let directions = document.getElementById('directions');
-        let origin = document.getElementById('origin');
-	let prep = document.getElementById('prep');
-	let course = document.getElementById('course');
-	let ingString = '';
-	let dirString = '';
-	recipename.textContent = arg.recipename;
-        origin.textContent = arg.origin;
-	prep.textContent = arg.prep;
-	course.textContent = arg.course;
 
-	for(let i = 0; i < arg.ingredients.length; i++){
-	    if(i == arg.ingredients.length - 1){
-		ingString += arg.ingredients[i];
-	    }
-	    else{
-		ingString += arg.ingredients[i] + ", ";
-	    }
-	}
-	ingredients.textContent = "Ingredients: " + ingString; 
-	//ingredients.textContent = "Ingredients: " + arg.ingredients;
+    else{ 
+
+        //making headings
+        var tr = document.createElement('tr');
+        var cell1 = document.createElement('td');
+        var cell2 = document.createElement('td');
+        var cell3 = document.createElement('td');
+        var cell4 = document.createElement('td');
+        var cell5 = document.createElement('td');
+        var cell6 = document.createElement('td');
+        cell1.innerHTML = "Recipe Name";
+        cell2.innerHTML = "Ingredients";
+        cell3.innerHTML = "Directions";
+        cell4.innerHTML = "Origin";
+        cell5.innerHTML = "Prep-time";
+        cell6.innerHTML = "Course";
+        tr.appendChild(cell1);
+        tr.appendChild(cell2);
+        tr.appendChild(cell3);
+        tr.appendChild(cell4);
+        tr.appendChild(cell5);
+        tr.appendChild(cell6);
+        table.appendChild(tr);
         
-	for(let i = 0; i < arg.directions.length; i++){
-	    if(i == arg.directions.length - 1){
-		dirString += arg.directions[i];
-	    }
-	    else{
-		dirString += arg.directions[i] + ", ";
-	    }
-	}
-	directions.textContent = "Directions: " + dirString;
-	//directions.textContent = "Directions: " + arg.directions;
-	 
-}
-})
-
-ipcMain.on('first_recipe', (event, arg) => {
-
-        var displayrecipe = RecipeMap
-		console.log(displayrecipe)
-        var a = displayrecipe;
-        event.sender.send('first_recipe', displayrecipe);
+        //for every recipe returned make a new table row
+        for(var i = 0; i < arg.length; i++){
+            let ingString = '';
+            let dirString = '';
+            var tr = document.createElement('tr');
+            var recipe_cell = document.createElement('td');
+            var ingredient_cell = document.createElement('td');
+            var direction_cell = document.createElement('td');
+            var origin_cell = document.createElement('td');
+            var preptime_cell = document.createElement('td');
+            var course_cell = document.createElement('td');
         
-    
-    //event.sender.send('norecipe', 'No Recipe Exists')
-	
+            //origin.textContent = arg[i].origin;
+            //prep.textContent = arg[i].prep;
+            //course.textContent = arg[i].course;
+
+            //parse out ingredients string
+            for(let j = 0; j < arg[i].ingredients.length; j++){
+	            if(j == arg[i].ingredients.length - 1){
+	                ingString += arg[i].ingredients[j];	   
+	            }
+	            else{
+	                ingString += arg[i].ingredients[j] + ", ";
+    	        }
+            }
+            //parse out directions string    
+            for(let j = 0; j < arg[i].directions.length; j++){
+	            if(j == arg[i].directions.length - 1){
+	                dirString += arg[i].directions[j];
+	            }
+	            else{
+	                dirString += arg[i].directions[j] + ", ";
+                }
+            }	
+   
+            //fill cells with appropriate data
+            recipe_cell.innerHTML = arg[i].recipename;
+            ingredient_cell.innerHTML = ingString;
+            direction_cell.innerHTML = dirString;
+            origin_cell.innerHTML = arg[i].origin;
+            preptime_cell.innerHTML = arg[i].prep;
+            course_cell.innerHTML = arg[i].course;
+            
+            //add rows to the table
+            tr.appendChild(recipe_cell);
+            tr.appendChild(ingredient_cell);
+            tr.appendChild(direction_cell);
+            tr.appendChild(origin_cell);
+            tr.appendChild(preptime_cell);
+            tr.appendChild(course_cell);
+            table.appendChild(tr);
+        }
+    }
 })
