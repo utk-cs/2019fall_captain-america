@@ -21,6 +21,7 @@ ipcRenderer.on('random_recipe_return', (event, arg ) => {
         let origin = document.getElementById('origin');
 		let prep = document.getElementById('prep');
 		let course = document.getElementById('course');
+		let img = document.getElementById('img');
 		recipename.textContent = "No recipes added yet";
         ingredients.textContent = "";
         directions.textContent = ""; 
@@ -39,10 +40,13 @@ ipcRenderer.on('random_recipe_return', (event, arg ) => {
 		let course = document.getElementById('course');
 		let ingString = "";
 		let dirString = "";
-	recipename.textContent = arg.recipename;
-	origin.textContent = "Origin: " + arg.origin;
-	prep.textContent = "Prep Time: " + arg.prep;
-	course.textContent = "Course: " + arg.course;
+		let img = document.getElementById('img');
+		recipename.textContent = arg.recipename;
+		origin.textContent = "Origin: " + arg.origin;
+		prep.textContent = "Prep Time: " + arg.prep;
+		course.textContent = "Course: " + arg.course;
+		img.innerHTML = "<img src = images/" +  arg.img + ' width="128" height="128"> </img>'
+		console.log(img);
 	    
         for(let i = 0; i < arg.ingredients.length; i++){
 			if(i == arg.ingredients.legnth - 1){

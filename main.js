@@ -7,13 +7,14 @@ fs.open('recipeDatabase.txt', 'r+', function(err, file) {
 });
  
 class Recipe{
-	constructor(name, ing, dir, orig, prep, course){
+	constructor(name, ing, dir, orig, prep, course, img){
 		this.recipename = name;
 		this.ingredients = ing;
 		this.directions = dir;
 		this.origin = orig;
 		this.prep = prep;
-		this.course = course;
+        this.course = course;
+        this.img = img;
 	}
 	get name(){
 		return this.recipename;
@@ -67,7 +68,7 @@ function readTextFile(file) {
             i++; // this last one is for the blank line(s?) that separates recipes
             if (i >= data.length) break;
 
-            let newrecipe = new Recipe(recipe_name, ingredients, directions, origin, prep, course);
+            let newrecipe = new Recipe(recipe_name, ingredients, directions, origin, prep, course, img);
             RecipeMap.set(recipe_name, newrecipe);
             console.log(newrecipe);
         }
@@ -173,16 +174,6 @@ ipcMain.on('search-request', (event, arg) => {
 
     });
 
-    //searches the map based on the directions and pushes matching items 
-    //onto array
-    //RecipeMap.forEach(function (item, index){
-     //   for(var i = 0; i < item.directions.length; i++){             
-      //      if(item.directions[i] === search){
-        //        itemsret.push(item);
-          //  }
-       // }
-    //});
-
     //removes duplicate items
     //inserts each element in hashtable after it checks for its existence
     //in the hash table
@@ -209,10 +200,10 @@ ipcMain.on('browse-request', (event, arg) => {
 
 
 //listens for new recipe to add
-ipcMain.on('recipe', (event, recipe_name, ingredients, directions, origin, prep, course) => {
+ipcMain.on('recipe', (event, recipe_name, ingredients, directions, origin, prep, course, img) => {
     //if recipe name does not exist add it to the map
     if(RecipeMap.has(recipe_name) == false){
-        let newrecipe = new Recipe(recipe_name, ingredients, directions, origin, prep, course);
+        let newrecipe = new Recipe(recipe_name, ingredients, directions, origin, prep, course, img);
 	    RecipeMap.set(recipe_name, newrecipe);
         event.sender.send('recipe_exists', false);
     }

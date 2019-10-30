@@ -5,14 +5,14 @@ const { ipcRenderer } = require('electron')
 function log(message){
     ipcRenderer.send('log', message)
 }
-let prefix = "Recipe: "; 
+
+
 //when main sends back a response message it will be received here
 ipcRenderer.on('recipe', (event, arg ) => {
 
     //getting a handle on the table and clearing it
     let table = document.getElementById('tableId');
     table.innerHTML = "";
-
     //if no elements in array, display no elements
     if(arg.length === 0){
         var tr = document.createElement('tr');
@@ -26,12 +26,12 @@ ipcRenderer.on('recipe', (event, arg ) => {
 
         //making headings
         var tr = document.createElement('tr');
-        var cell1 = document.createElement('td');
-        var cell2 = document.createElement('td');
-        var cell3 = document.createElement('td');
-        var cell4 = document.createElement('td');
-        var cell5 = document.createElement('td');
-        var cell6 = document.createElement('td');
+        var cell1 = document.createElement('th');
+        var cell2 = document.createElement('th');
+        var cell3 = document.createElement('th');
+        var cell4 = document.createElement('th');
+        var cell5 = document.createElement('th');
+        var cell6 = document.createElement('th');
         cell1.innerHTML = "Recipe Name";
         cell2.innerHTML = "Ingredients";
         cell3.innerHTML = "Directions";
@@ -51,6 +51,7 @@ ipcRenderer.on('recipe', (event, arg ) => {
             let ingString = '';
             let dirString = '';
             var tr = document.createElement('tr');
+            tr.id = "row" + i;
             var recipe_cell = document.createElement('td');
             var ingredient_cell = document.createElement('td');
             var direction_cell = document.createElement('td');
@@ -58,9 +59,6 @@ ipcRenderer.on('recipe', (event, arg ) => {
             var preptime_cell = document.createElement('td');
             var course_cell = document.createElement('td');
         
-            //origin.textContent = arg[i].origin;
-            //prep.textContent = arg[i].prep;
-            //course.textContent = arg[i].course;
 
             //parse out ingredients string
             for(let j = 0; j < arg[i].ingredients.length; j++){
@@ -97,10 +95,10 @@ ipcRenderer.on('recipe', (event, arg ) => {
             tr.appendChild(preptime_cell);
             tr.appendChild(course_cell);
             table.appendChild(tr);
+            console.log(table);
         }
     }
 })
-
 
 //gets text in the search bar upon click and sends it to main
 document.getElementById('search-request').addEventListener('click', function(){
@@ -146,16 +144,3 @@ document.getElementById('search-request').addEventListener('click', function(){
     console.log(checkbox_code + search);
 })
 
-//listens for event "search request"
-//gets passed arg which is the text in the search request
-ipcMain.on('search-request', (event, arg) => {
-    if(RecipeMap.has(arg) == true){
-            var displayrecipe = RecipeMap.get(arg)
-            console.log(displayrecipe.ingredients)
-            var a = displayrecipe.ingredients;
-            event.sender.send('recipe', displayrecipe);
-        }
-    else{
-    event.sender.send('norecipe', 'No Recipe Exists')
-    }
-})
