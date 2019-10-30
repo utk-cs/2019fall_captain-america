@@ -49,7 +49,7 @@ ipcRenderer.on('random_recipe_return', (event, arg ) => {
 		console.log(img);
 	    
         for(let i = 0; i < arg.ingredients.length; i++){
-			if(i == arg.ingredients.legnth - 1){
+			if(i == arg.ingredients.length - 1){
 				ingString += arg.ingredients[i];
 			}
 			else{

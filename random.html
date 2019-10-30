@@ -23,6 +23,7 @@
 
     .top-center {
       margin: 0;
+      font-family: helvetica;
       position: absolute;
       text-align: center;
       vertical-align: middle;
@@ -52,6 +53,11 @@
       font-size: 40px;
       color: #F3DBA4;
     }
+
+    .title {
+	font-size: 20px;
+	color: black;
+    }
     
   </style>
 </head>
@@ -59,33 +65,42 @@
 <body>
   <div class="top-center">
     <button class="button" id="display_random_recipe" value="test">Display Random Recipe</button>
-    <button class="button" onclick="location.href='basic.html'">Back</button>
-  </div>
-
-  <div class="center">
+    <br>
+    <br>
+    <br>
     <div class="recipe-name" id='recipename'>
     <br>
     </div>
-    <div id='origin'>
+    <div class="title" id="img">
+    <br>
+    <br>
     </div>
-    <div id ='prep'>
+    <div class="title" id='origin'>
+    <br>
     </div>
-    <div id ='course'>
+    <div class="title" id='prep'>
+    <br>
     </div>
-      <div id='ingredients'>
-      </div>
-      <div id='directions'>
-      </div>
+    <div class="title" id='course'>
+    <br>
+    </div>
+    <div class="title" id='ingredients'>
+	    <br>
+    </div>
+    <div class="title" id='directions'>
+	    <br>
+    </div>
+    <br>
+    <br>
+    <button class="button" onclick="printFunction()">Print this recipe</button>
+    <button class="button" onclick="location.href='basic.html'">Back</button>
   </div>
 
 
-  <div id = "img">
-  </div>
+
    <!-- trying to add print function -->
 
-<div class ="top">
- <button onclick = "printFunction()">Print this recipe</button>
-
+   
  <script>
  function printFunction() {
    window.print();
