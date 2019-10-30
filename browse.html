@@ -50,7 +50,36 @@
         text-align: center;
         margin-bottom: 4px;
       }
-      
+      table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            opacity: 0.95;
+            font-family: verdana;
+            vertical-align: middle;
+            padding: 3%;
+          }
+          table{
+            width: 90%;
+            display: table;
+            
+          }
+          .row{
+            display: table-row;
+          }
+          th, td{
+            text-align: center;
+          }
+          th{
+            background-color: white;
+            color: rgb(187, 145, 8);
+            font-size: 20;
+          }
+          tr:nth-child(even){
+            background-color: rgb(240, 219, 171)
+          }
+          tr:nth-child(odd){
+            background-color: white;
+          }
     </style>
   </head>
 
