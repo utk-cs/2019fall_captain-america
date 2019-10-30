@@ -26,18 +26,21 @@ ipcRenderer.on('recipe', (event, arg ) => {
 
         //making headings
         var tr = document.createElement('tr');
+        var cell0 = document.createElement('th');
         var cell1 = document.createElement('th');
         var cell2 = document.createElement('th');
         var cell3 = document.createElement('th');
         var cell4 = document.createElement('th');
         var cell5 = document.createElement('th');
         var cell6 = document.createElement('th');
+        cell0.innerHTML = "";
         cell1.innerHTML = "Recipe Name";
         cell2.innerHTML = "Ingredients";
         cell3.innerHTML = "Directions";
         cell4.innerHTML = "Origin";
         cell5.innerHTML = "Prep-time";
         cell6.innerHTML = "Course";
+        tr.appendChild(cell0);
         tr.appendChild(cell1);
         tr.appendChild(cell2);
         tr.appendChild(cell3);
@@ -52,6 +55,7 @@ ipcRenderer.on('recipe', (event, arg ) => {
             let dirString = '';
             var tr = document.createElement('tr');
             tr.id = "row" + i;
+            var image_cell = document.createElement('td');
             var recipe_cell = document.createElement('td');
             var ingredient_cell = document.createElement('td');
             var direction_cell = document.createElement('td');
@@ -86,8 +90,10 @@ ipcRenderer.on('recipe', (event, arg ) => {
             origin_cell.innerHTML = arg[i].origin;
             preptime_cell.innerHTML = arg[i].prep;
             course_cell.innerHTML = arg[i].course;
-            
+            image_cell.innerHTML = "<img src = 'images/" + arg[i].img + " 'width = 128px' 'height = 128px' '> </img>'";
+            console.log(image_cell.innerHTML);
             //add rows to the table
+            tr.appendChild(image_cell);
             tr.appendChild(recipe_cell);
             tr.appendChild(ingredient_cell);
             tr.appendChild(direction_cell);
