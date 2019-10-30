@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Recipe Book</title>
   <style> 
     .button {
       background-color: #F3DBA4;
       border: none;
       color: black;
-      padding: 8px 20px;
+      padding: 12px 24px;
       text-align: center;
-      font-size: 13px;
-      font: verdana;
+      font-size: 18px;
+      font-family: Helvetica;
       cursor: default;
-      width: 150px;
-      margin-top: 4px;
+      width: 200px;
+      margin-top: 8px;
     }
     .button:hover {
       background-color: rgb(231, 193, 139);
@@ -28,15 +29,22 @@
       transform: translate(-50%, -50%);
     }
     h1 {
+      font-size: 64px;
+      font-family: Verdana;
       text-shadow: 2px 2px #ffffff;
+    }
+
+    body {
+      background-repeat: no-repeat;
+      background-size: cover;
     }
   </style>
 </head>
 
-<body background="images\back.jpg"></body>
+<body background="images\1.jpg"></body>
   <body>
     <div class="center">
-      <h1><font face="verdana">RECIPE BOOK</font></h1>
+      <h1>RECIPE BOOK</h1>
       <br>
       <button class="button" onclick="location.href='new_recipe.html'">New Recipe</button>
       <br>
