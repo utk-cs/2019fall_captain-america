@@ -33,7 +33,14 @@
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, 0%);
       }
-  
+
+      .wrapper {
+	margin: auto;
+	position: absolute;
+	text-align: center;
+	vertical-align: middle;
+      }  
+
       .center {
         font-family: verdana;
         font-size: 13px;
@@ -56,7 +63,7 @@
             opacity: 0.95;
             font-family: verdana;
             vertical-align: middle;
-            padding: 3%;
+	    padding: 3%;
           }
           table{
             width: 90%;
@@ -83,51 +90,63 @@
     </style>
   </head>
 
-  <body>
-    <div class="top-center">
-        <button class="button" id="display_first_recipe" value="test">Display First Recipe</button>
-        <button class="button" onclick="location.href='basic.html'">Back</button>
+  <body class="center" style="overflow: auto;">
+    <div class ="top-center">    
+       <button class="button" id="display_first_recipe" value="test">Display Recipes</button>
     </div>
     <br>
     <br>
     <br>
     <br>
     <br>
+    <table id="tableId">
+    </table>
     <style>
       table, th, td {
         border: 1px solid black;
+        border-collapse: collapse;
+	opacity: 0.95;
+	font-family: helvetica;
+	padding: 3%;
+      }
+      table {
+	margin-right: auto;
+	margin-left; auto;
+	width: 90%;
+	display: table;
+      }
+      .row{
+	display: table-row;
+      }
+      th, td{
+	text-align: center;
+      }
+      th{
+	background-color: white;
+	color: rgb(187, 145, 8);
+	font-size: 20;
+      }
+      tr:nth-child(even){
+	background-color: rgb(250, 233, 193)
+      }
+      tr:nth-child(odd){
+	background-color: white;
       }
 </style>
-    <table id=tableId style="text-align: center"></table>
-      <!--<div class="center">
-        <div class="recipe-name" id='recipename'>
-          <br>
-        </div>
-        <div id='origin'>
-        </div>
-        <div id ='prep'>
-        </div>
-        <div id ='course'>
-        </div>
-          <div id='ingredients'>
-          </div>
-          <div id='directions'>
-          </div>
-      </div>--> 
-
-         <!-- trying to add print function -->
-
-<div class ="top">
-  <button onclick = "printFunction()">Print this recipe</button>
- 
+<!--<table id=tableId style="text-align: center"></table>-->
+<div class="wrapper">
+  <button class="button" onclick = "printFunction()">Print this recipe</button>
+  <button class="button" onclick="location.href='basic.html'">Back</button>
+</div>
   <script>
   function printFunction() {
     window.print();
   }
   </script>
+   
   <!-- end of print function -->
   
- </div>
+   
       
   <!---
     <button id="button">Next Recipe</button>
