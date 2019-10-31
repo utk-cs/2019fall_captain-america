@@ -3,39 +3,50 @@
 
 <head>
   <style>
+    body {
+      background-image: url("images/1.jpg");
+    }
+
+    .layer {
+      background-color: rgba(255, 254, 236, 0.7);
+      background-size: cover;
+      background-clip: padding-box;
+      padding: 15px;
+    }
+
     .button {
-            margin: auto;
-            background-color: #F3DBA4;
-            border: none;
-            color: black;
-            padding: 8px 20px;
-            display: block;
-            text-align: center;
-            font-size: 13px;
-            font: verdana;
-            cursor: default;
-            width: 150px;
-            margin-bottom: 4px;
-          }
-      
-          .button:hover {
-            background-color: rgb(231, 193, 139);
-          }
-          
-          .center {
-            font-family: verdana;
-            font-size: 13px;
-            position: absolute;
-            vertical-align: middle;
-            text-align: center;
-            overflow: hidden;
-            margin-top: 4px;
-            margin-left: 50%;
-            margin-right: 50%;
-            width: 60%;
-            -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, 0%);
-          }
+      margin: auto;
+      background-color: #F3DBA4;
+      border: none;
+      color: black;
+      padding: 12px 24px;
+      display: block;
+      text-align: center;
+      font-size: 18px;
+      font: helvetica;
+      cursor: default;
+      width: 200px;
+      margin-bottom: 8px;
+    }
+
+    .button:hover {
+      background-color: rgb(231, 193, 139);
+    }
+
+    .center {
+      font-family: helvetica;
+      font-size: 18px;
+      position: absolute;
+      vertical-align: middle;
+      text-align: center;
+      overflow: hidden;
+      margin-top: 4px;
+      margin-left: 50%;
+      margin-right: 50%;
+      width: 60%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, 0%);
+    }
 
     .top-center {
       margin: 0;
@@ -50,65 +61,67 @@
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, 0%);
     }
+
     .recipe-name {
       text-align: center;
       margin-bottom: 4px;
       font-size: 40px;
-      color: #F3DBA4;
+      color: rgb(150, 1, 28);
     }
 
     .title {
-	font-size: 20px;
-	color: black;
+      font-size: 20px;
+      color: black;
     }
-    
   </style>
 </head>
 
 <body class="center" style="overflow: auto;">
-    <button class="button" id="display_random_recipe" value="test">Display Random Recipe</button>
+  <button class="button" style="width: 250px;" id="display_random_recipe" value="test">Display Random Recipe</button>
+  <br>
+  <br>
+  <div class="layer">
+  <div class="recipe-name" id='recipename'>
+    <br>
+  </div>
+  <div class="title" id="img">
     <br>
     <br>
-    <div class="recipe-name" id='recipename'>
+  </div>
+  <div class="title" id='origin'>
     <br>
-    </div>
-    <div class="title" id="img">
+  </div>
+  <div class="title" id='prep'>
     <br>
+  </div>
+  <div class="title" id='course'>
     <br>
-    </div>
-    <div class="title" id='origin'>
+  </div>
+  <div class="title" id='ingredients'>
     <br>
-    </div>
-    <div class="title" id='prep'>
+  </div>
+  <div class="title" id='directions'>
     <br>
-    </div>
-    <div class="title" id='course'>
-    <br>
-    </div>
-    <div class="title" id='ingredients'>
-	    <br>
-    </div>
-    <div class="title" id='directions'>
-	    <br>
-    </div>
-    <br>
-    <br>
-    <button class="button" onclick="printFunction()">Print this recipe</button>
-    <button class="button" onclick="location.href='basic.html'">Back</button>
+  </div>
+</div>
+  <br>
+  <br>
+  <button class="button" onclick="printFunction()">Print this recipe</button>
+  <button class="button" onclick="location.href='basic.html'">Back</button>
   </div>
 
 
 
-   <!-- trying to add print function -->
+  <!-- trying to add print function -->
 
-   
- <script>
- function printFunction() {
-   window.print();
- }
- </script>
- <!-- end of print function -->
-</div>
+
+  <script>
+    function printFunction() {
+      window.print();
+    }
+  </script>
+  <!-- end of print function -->
+  </div>
   <script>
     require('./random.js');
   </script>
