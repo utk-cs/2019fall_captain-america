@@ -4,22 +4,38 @@
 <head>
   <style>
     .button {
-      background-color: #F3DBA4;
-      border: none;
-      color: black;
-      padding: 8px 20px;
-      display: block;
-      text-align: center;
-      font-size: 13px;
-      font: verdana;
-      cursor: default;
-      width: 200px;
-      margin-top: 4px;
-    }
-
-    .button:hover {
-      background-color: rgb(231, 193, 139);
-    }
+            margin: auto;
+            background-color: #F3DBA4;
+            border: none;
+            color: black;
+            padding: 8px 20px;
+            display: block;
+            text-align: center;
+            font-size: 13px;
+            font: verdana;
+            cursor: default;
+            width: 150px;
+            margin-bottom: 4px;
+          }
+      
+          .button:hover {
+            background-color: rgb(231, 193, 139);
+          }
+          
+          .center {
+            font-family: verdana;
+            font-size: 13px;
+            position: absolute;
+            vertical-align: middle;
+            text-align: center;
+            overflow: hidden;
+            margin-top: 4px;
+            margin-left: 50%;
+            margin-right: 50%;
+            width: 60%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, 0%);
+          }
 
     .top-center {
       margin: 0;
@@ -34,19 +50,6 @@
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, 0%);
     }
-
-    .center {
-      font-family: verdana;
-      font-size: 13px;
-      position: absolute;
-      top: 50%;
-      margin-left: 50%;
-      margin-right: 50%;
-      width: 40%;
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-    }
-
     .recipe-name {
       text-align: center;
       margin-bottom: 4px;
@@ -62,10 +65,8 @@
   </style>
 </head>
 
-<body>
-  <div class="top-center">
+<body class="center" style="overflow: auto;">
     <button class="button" id="display_random_recipe" value="test">Display Random Recipe</button>
-    <br>
     <br>
     <br>
     <div class="recipe-name" id='recipename'>
