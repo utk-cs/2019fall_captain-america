@@ -32,18 +32,21 @@ ipcRenderer.on('first_recipe', (event, arg ) => {
 
         //making headings
         var tr = document.createElement('tr');
-        var cell1 = document.createElement('td');
+        var cell0 = document.createElement('td');
+	var cell1 = document.createElement('td');
         var cell2 = document.createElement('td');
         var cell3 = document.createElement('td');
         var cell4 = document.createElement('td');
         var cell5 = document.createElement('td');
         var cell6 = document.createElement('td');
+	cell0.innerHTML = "Image";
         cell1.innerHTML = "Recipe Name";
         cell2.innerHTML = "Ingredients";
         cell3.innerHTML = "Directions";
         cell4.innerHTML = "Origin";
         cell5.innerHTML = "Prep-time";
         cell6.innerHTML = "Course";
+	tr.appendChild(cell0);    
         tr.appendChild(cell1);
         tr.appendChild(cell2);
         tr.appendChild(cell3);
@@ -57,6 +60,8 @@ ipcRenderer.on('first_recipe', (event, arg ) => {
             let ingString = '';
             let dirString = '';
             var tr = document.createElement('tr');
+	    tr.id = "row" + i;
+	    var image_cell = document.createElement('td');
             var recipe_cell = document.createElement('td');
             var ingredient_cell = document.createElement('td');
             var direction_cell = document.createElement('td');
@@ -88,6 +93,7 @@ ipcRenderer.on('first_recipe', (event, arg ) => {
             }	
    
             //fill cells with appropriate data
+            image_cell.innerHTML = "<img src = 'images/" + arg[i].img + " 'width = 128px' height = 128px' '> </img>'";
             recipe_cell.innerHTML = arg[i].recipename;
             ingredient_cell.innerHTML = ingString;
             direction_cell.innerHTML = dirString;
@@ -96,6 +102,7 @@ ipcRenderer.on('first_recipe', (event, arg ) => {
             course_cell.innerHTML = arg[i].course;
             
             //add rows to the table
+	    tr.appendChild(image_cell);
             tr.appendChild(recipe_cell);
             tr.appendChild(ingredient_cell);
             tr.appendChild(direction_cell);
