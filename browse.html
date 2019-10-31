@@ -3,48 +3,40 @@
 
   <head>
     <style>
-      .button {
-        background-color: #F3DBA4;
-        border: none;
-        color: black;
-        padding: 8px 20px;
-        display: block;
-        text-align: center;
-        font-size: 13px;
-        font: verdana;
-        cursor: default;
-        width: 200px;
-        margin-top: 4px;
-      }
-  
-      .button:hover {
-        background-color: rgb(231, 193, 139);
-      }
-  
-      .top-center {
-        margin: 0;
-        position: absolute;
-        text-align: center;
-        vertical-align: middle;
-        overflow: hidden;
-        top: 0%;
-        left: 50%;
-        margin-right: -50%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, 0%);
-      }
-  
-      .center {
-        font-family: verdana;
-        font-size: 13px;
-        position: absolute;
-        top: 50%;
-        margin-left: 50%;
-        margin-right: 50%;
-        width: 40%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-      }
+     
+     .button {
+            margin: auto;
+            background-color: #F3DBA4;
+            border: none;
+            color: black;
+            padding: 8px 20px;
+            display: block;
+            text-align: center;
+            font-size: 13px;
+            font: verdana;
+            cursor: default;
+            width: 150px;
+            margin-bottom: 4px;
+          }
+      
+          .button:hover {
+            background-color: rgb(231, 193, 139);
+          }
+          
+          .center {
+            font-family: verdana;
+            font-size: 13px;
+            position: absolute;
+            vertical-align: middle;
+            text-align: center;
+            overflow: hidden;
+            margin-top: 4px;
+            margin-left: 50%;
+            margin-right: 50%;
+            width: 60%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, 0%);
+          }
   
       .recipe-name {
         text-align: center;
@@ -54,14 +46,14 @@
             border: 1px solid black;
             border-collapse: collapse;
             opacity: 0.95;
-            font-family: verdana;
-            vertical-align: middle;
+            font-family: helvetica;
             padding: 3%;
           }
           table{
+            margin-right: auto;
+            margin-left: auto;
             width: 90%;
             display: table;
-            
           }
           .row{
             display: table-row;
@@ -75,7 +67,7 @@
             font-size: 20;
           }
           tr:nth-child(even){
-            background-color: rgb(240, 219, 171)
+            background-color: rgb(250, 233, 193)
           }
           tr:nth-child(odd){
             background-color: white;
@@ -83,42 +75,22 @@
     </style>
   </head>
 
-  <body>
-    <div class="top-center">
-        <button class="button" id="display_first_recipe" value="test">Display First Recipe</button>
-        <button class="button" onclick="location.href='basic.html'">Back</button>
-    </div>
+  <body class="center" style="overflow: auto;"></body>
+   
+    <button class="button" id="display_first_recipe" value="test">Display Recipes</button>
+    
     <br>
     <br>
     <br>
     <br>
     <br>
-    <style>
-      table, th, td {
-        border: 1px solid black;
-      }
-</style>
-    <table id=tableId style="text-align: center"></table>
-      <!--<div class="center">
-        <div class="recipe-name" id='recipename'>
-          <br>
-        </div>
-        <div id='origin'>
-        </div>
-        <div id ='prep'>
-        </div>
-        <div id ='course'>
-        </div>
-          <div id='ingredients'>
-          </div>
-          <div id='directions'>
-          </div>
-      </div>--> 
-
-         <!-- trying to add print function -->
-
+    <table id=tableId>
+    </table>
+     <br>
 <div class ="top">
-  <button onclick = "printFunction()">Print this recipe</button>
+
+  <button class = "button" onclick = "printFunction()">Print this recipe</button>
+  <button class="button" onclick="location.href='basic.html'">Back</button>
  
   <script>
   function printFunction() {
