@@ -4,6 +4,8 @@
 <head>
 	<style>
 		input[type=text] {
+			font: helvetica;
+			font-size: 14px;
 			width: 100%;
 			padding: 6px 10px;
 			margin: 4px 0;
@@ -13,18 +15,29 @@
 			box-sizing: border-box;
 		}
 
+		body{
+			background-image: url("images/1.jpg");
+		}
+
+		.layer{
+			background-color: rgba(255, 254, 236, 0.7);
+			background-size: cover;
+			background-clip: padding-box;
+			padding: 15px;
+		}
+
 		.button {
 			background-color: #F3DBA4;
 			border: none;
 			color: black;
-			padding: 8px 20px;
+			padding: 12px 24px;
 			display: block;
 			text-align: center;
-			font-size: 13px;
-			font: verdana;
+			font-size: 18px;
+			font: helvetica;
 			cursor: default;
-			width: 150px;
-			margin-bottom: 4px;
+			width: 200px;
+			margin-bottom: 8px;
 		}
 
 		.button:hover {
@@ -45,12 +58,12 @@
 
 		.center {
 			font-family: verdana;
-			font-size: 13px;
+			font-size: 18px;
 			position: absolute;
 			margin-top: 4px;
 			margin-left: 50%;
 			margin-right: 50%;
-			width: 60%;
+			width: 50%;
 			-ms-transform: translate(-50%, -50%);
 			transform: translate(-50%, 0%);
 		}
@@ -62,7 +75,7 @@
 </head>
 
 <body class="center">
-	<form>
+	<form class="layer">
 		Recipe Name: <input type="text" id=recipe_name>
 		<br>
 		<br>
@@ -103,9 +116,8 @@
 		<input type="text" id=directions8>
 		<input type="text" id=directions9>
 		<input type="text" id=directions10>
-		<br>
-		<br>
 	</form>
+	<br>
 	<div style="text-align:center; margin-bottom: 8px;" id='recipe_exists'>
 	</div>
 	<!---
@@ -116,6 +128,7 @@
 		<button class="button" onclick="location.href='basic.html'">Back</button>
 	</div>
 </body>
+
 <script>
 	require('./new_recipe.js')
 </script>
