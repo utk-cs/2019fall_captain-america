@@ -41,8 +41,8 @@ document.getElementById('add_recipe').addEventListener('click', function(){
     let origin = document.getElementById('origin').value;
     let prep = document.getElementById('prep').value;
     let course = document.getElementById('course').value;
-    let img = document.getElementById('img').value;
-    
+    let img = document.getElementById('img').value.replace("C:\\fakepath\\", "");
+    //let img = document.getElementById('img').value
     
     while(document.getElementById(ingString).value !== ''){
 	ingredients[i-1] = document.getElementById(ingString).value;

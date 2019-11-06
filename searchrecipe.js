@@ -90,7 +90,9 @@ ipcRenderer.on('recipe', (event, arg ) => {
             origin_cell.innerHTML = arg[i].origin;
             preptime_cell.innerHTML = arg[i].prep;
             course_cell.innerHTML = arg[i].course;
+            //blake breaking images here uncomment below line to fix
             image_cell.innerHTML = "<img src = 'images/" + arg[i].img + "' width = 128px height = 128px> </img>";
+            //image_cell.innerHTML = "<img src =" + arg[i].img + "' width = 128px height = 128px> </img>";
             console.log(image_cell.innerHTML);
             //add rows to the table
             tr.appendChild(image_cell);
