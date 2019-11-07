@@ -1,10 +1,14 @@
 //file that renderers events and sends them to main
 const { ipcRenderer } = require('electron')
+window.$ = window.jQuery = require('jquery');
 
 //sends message to main for debugging
 function log(message){
     ipcRenderer.send('log', message)
 }
+
+
+var returnarr;
 
 
 //when main sends back a response message it will be received here
@@ -20,10 +24,11 @@ ipcRenderer.on('recipe', (event, arg ) => {
         cell1.innerHTML = "No recipes found";
         tr.appendChild(cell1);
         table.appendChild(tr);
+        returnarr = arg;
     }
 
     else{ 
-
+        returnarr = arg;
         //making headings
         var tr = document.createElement('tr');
         var cell0 = document.createElement('th');
@@ -47,6 +52,7 @@ ipcRenderer.on('recipe', (event, arg ) => {
         tr.appendChild(cell4);
         tr.appendChild(cell5);
         tr.appendChild(cell6);
+        tr.id = "title";
         table.appendChild(tr);
         
         //for every recipe returned make a new table row
@@ -54,7 +60,7 @@ ipcRenderer.on('recipe', (event, arg ) => {
             let ingString = '';
             let dirString = '';
             var tr = document.createElement('tr');
-            tr.id = "row" + i;
+            tr.id = i;
             var image_cell = document.createElement('td');
             var recipe_cell = document.createElement('td');
             var ingredient_cell = document.createElement('td');
@@ -150,3 +156,9 @@ document.getElementById('search-request').addEventListener('click', function(){
     console.log(checkbox_code + search);
 })
 
+
+
+$("#tableId").on('click', 'tr', function() {
+    var rowid = this.id;
+    log(returnarr[rowid]);
+});

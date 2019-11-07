@@ -21,6 +21,7 @@
     "electron": "^6.0.5"
   },
   "dependencies": {
-    "eslint": "^6.3.0"
+    "eslint": "^6.3.0",
+    "jquery": "^3.4.1"
   }
 }

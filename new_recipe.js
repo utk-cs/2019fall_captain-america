@@ -67,6 +67,5 @@ document.getElementById('add_recipe').addEventListener('click', function(){
 
 	dirString = dir.concat(i.toString());
     }
-
     ipcRenderer.send('recipe', recipe_name, ingredients, directions, origin, prep, course, img);
 })
