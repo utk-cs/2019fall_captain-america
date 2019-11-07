@@ -39,44 +39,41 @@ class Recipe{
 function readTextFile(file) {
     try {
         var data = fs.readFileSync(file, 'utf8').toString().split('\n');
-        console.log(data);
-        console.log(data.length);
+        //console.log(data);
+        //console.log(data.length);
     } catch(e) {
         console.log('error:', e.stack);
     }
     
     if (data[0] != '') { // if its an empty file there's nothing to read
         for (var i = 0; i < data.length; i++) {
+            if (data[i] == '') break; // there's always an extra line at the end of the file
             let recipe_name = data[i];
             i++;
-            if (i >= data.length) break; // error checking? in case the file is formatted incorrectly?
-            console.log(i+data[i]);
+            //if (i >= data.length) break; // error checking? in case the file is formatted incorrectly?
             let origin = data[i];
             i++;
-            if (i >= data.length) break;
-            console.log(i+data[i]);
+            //if (i >= data.length) break;
             let prep = data[i];
             i++;
-            if (i >= data.length) break;
-            console.log(i+data[i]);
+            //if (i >= data.length) break;
             let course = data[i];
             i++;
-            if (i >= data.length) break;
-            console.log(i+data[i]);
+            //if (i >= data.length) break;
+            let img = data[i];
+            i++;
+            //if (i >= data.length) break;
             let ingredients = data[i].split(',');
             i++;
-            if (i >= data.length) break;
-            console.log(i+data[i]);
+            //if (i >= data.length) break;
             let directions = data[i].split(',');
             i++;
-            if (i >= data.length) break;
-            console.log('hello');
-            i++; // this last one is for the blank line(s?) that separates recipes
-            if (i >= data.length) break;
+            //if (i >= data.length) break;
+            //i++; // this last one is for the blank line(s?) that separates recipes
 
             let newrecipe = new Recipe(recipe_name, ingredients, directions, origin, prep, course, img);
             RecipeMap.set(recipe_name, newrecipe);
-            console.log(newrecipe);
+            //console.log(newrecipe);
         }
     }
     /*fs.readTextFile(file, 'utf8', function(err, contents) {
@@ -101,7 +98,7 @@ function writeRecipe(value, key, map) {
 
 app.on('ready', () => {
     // read in the file and sets up the map with previously saved recipes
-    //readTextFile('./recipeDatabase.txt');
+    readTextFile('./recipeDatabase.txt');
 
     // This creates a new BrowserWindow and sets win to be a reference to that new window.
     win = new BrowserWindow({
