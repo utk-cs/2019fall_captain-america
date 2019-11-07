@@ -189,7 +189,6 @@ ipcMain.on('search-request', (event, arg) => {
         ? false : (seen[item.recipename] = true);
     });
  
-    console.log(items_no_duplicates)
     //sends array of matching items to searchrecipe
     event.sender.send('recipe', items_no_duplicates);
 
@@ -255,4 +254,14 @@ ipcMain.on('first_recipe', (event, arg) => {
         imsorry.push(item);
     })
     event.sender.send('first_recipe', imsorry);
+})
+ 
+var display_recipe;
+ipcMain.on('display_recipe', (event, arg) => {
+    win.loadFile('display_recipe.html');
+    display_recipe = arg; 
+})
+
+ipcMain.on('display_recipe_ready', (event, arg) => {
+    event.sender.send('random_recipe_return', display_recipe);
 })

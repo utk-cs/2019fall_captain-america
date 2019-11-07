@@ -1,5 +1,7 @@
 //file that renderers events and sends them to main
-const { ipcRenderer } = require('electron')
+const { ipcRenderer } = require('electron');
+const { remote } = require('electron'),
+currWindow   = remote.getCurrentWindow();
 window.$ = window.jQuery = require('jquery');
 
 //sends message to main for debugging
@@ -10,7 +12,7 @@ function log(message){
 
 var returnarr;
 
-
+ 
 //when main sends back a response message it will be received here
 ipcRenderer.on('recipe', (event, arg ) => {
 
@@ -163,4 +165,5 @@ document.getElementById('search-request').addEventListener('click', function(){
 $("#tableId").on('click', 'tr', function() {
     var rowid = this.id;
     log(returnarr[rowid]);
+    ipcRenderer.send('display_recipe', returnarr[rowid]);
 });
