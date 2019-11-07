@@ -4,8 +4,6 @@ window.$ = window.jQuery = require('jquery');
 ipcRenderer.send('display_recipe_ready', "ready");
 
 ipcRenderer.on('random_recipe_return', (event, arg ) => {
-		
-		console.log("triggered");
 
         let recipename = document.getElementById('recipename');
         let ingredients = document.getElementById('ingredients');
@@ -21,7 +19,6 @@ ipcRenderer.on('random_recipe_return', (event, arg ) => {
 		prep.textContent = "Prep Time: " + arg.prep;
 		course.textContent = "Course: " + arg.course;
 		img.innerHTML = "<img src = images/" +  arg.img + ' width="512" height="360"> </img>'
-		console.log(img);
 	    
         for(let i = 0; i < arg.ingredients.length; i++){
 			if(i == arg.ingredients.length - 1){
@@ -43,8 +40,4 @@ ipcRenderer.on('random_recipe_return', (event, arg ) => {
 		}
 		
         directions.textContent = "Directions: " + dirString;
-
-		console.log("rec");
-		console.log(arg);
-		console.log("rec");
 })

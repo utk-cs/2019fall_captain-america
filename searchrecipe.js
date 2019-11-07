@@ -101,7 +101,6 @@ ipcRenderer.on('recipe', (event, arg ) => {
             //blake breaking images here uncomment below line to fix
             image_cell.innerHTML = "<img src = 'images/" + arg[i].img + "' width = 128px height = 128px> </img>";
             //image_cell.innerHTML = "<img src =" + arg[i].img + "' width = 128px height = 128px> </img>";
-            console.log(image_cell.innerHTML);
             //add rows to the table
             tr.appendChild(image_cell);
             tr.appendChild(recipe_cell);
@@ -111,7 +110,6 @@ ipcRenderer.on('recipe', (event, arg ) => {
             tr.appendChild(preptime_cell);
             tr.appendChild(course_cell);
             table.appendChild(tr);
-            console.log(table);
         }
     }
 })
@@ -157,7 +155,6 @@ document.getElementById('search-request').addEventListener('click', function(){
     //if no checkbox is selected search by everything
     if(checkbox_code === "00000") checkbox_code = "11111";
     ipcRenderer.send('search-request', checkbox_code + search);
-    console.log(checkbox_code + search);
 })
 
 
