@@ -50,21 +50,27 @@ function readTextFile(file) {
             let recipe_name = data[i];
             i++;
             if (i >= data.length) break; // error checking? in case the file is formatted incorrectly?
+            console.log(i+data[i]);
             let origin = data[i];
             i++;
             if (i >= data.length) break;
+            console.log(i+data[i]);
             let prep = data[i];
             i++;
             if (i >= data.length) break;
+            console.log(i+data[i]);
             let course = data[i];
             i++;
             if (i >= data.length) break;
+            console.log(i+data[i]);
             let ingredients = data[i].split(',');
             i++;
             if (i >= data.length) break;
+            console.log(i+data[i]);
             let directions = data[i].split(',');
             i++;
             if (i >= data.length) break;
+            console.log('hello');
             i++; // this last one is for the blank line(s?) that separates recipes
             if (i >= data.length) break;
 
@@ -88,7 +94,7 @@ function writeMap(map) {
 }
 
 function writeRecipe(value, key, map) {
-    fs.appendFile('recipeDatabase.txt', key + '\n' + value.origin + '\n' + value.prep + '\n' + value.course + '\n' + value.ingredients + '\n' + value.directions + '\n\n', function(err) {
+    fs.appendFileSync('recipeDatabase.txt', key + '\n' + value.origin + '\n' + value.prep + '\n' + value.course + '\n' + value.img + '\n' + value.ingredients + '\n' + value.directions + '\n\n', function(err) {
         if (err) throw err;
     });
 }
