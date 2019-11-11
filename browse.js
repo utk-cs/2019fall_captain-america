@@ -1,10 +1,17 @@
 //file that renderers events and sends them to main
 const { ipcRenderer } = require('electron')
+const { remote } = require('electron'),
+currWindow   = remote.getCurrentWindow();
+window.$ = window.jQuery = require('jquery');
+
 
 //sends message to main for debugging
 function log(message){
     ipcRenderer.send('log', message)
 }
+
+var returnarr;
+
 
 //when main sends back a response message it will be received here
 //listens for button to be clicked and requests data form main
@@ -23,10 +30,11 @@ ipcRenderer.on('first_recipe', (event, arg ) => {
         cell1.innerHTML = "No recipes found";
         tr.appendChild(cell1);
         table.appendChild(tr);
+        returnarr = arg;
     }
 
     else{ 
-
+        returnarr = arg;
         //making headings
         var tr = document.createElement('tr');
         var cell0 = document.createElement('td');
@@ -36,20 +44,21 @@ ipcRenderer.on('first_recipe', (event, arg ) => {
         var cell4 = document.createElement('td');
         var cell5 = document.createElement('td');
         var cell6 = document.createElement('td');
-	cell0.innerHTML = "Image";
+	    cell0.innerHTML = "";
         cell1.innerHTML = "Recipe Name";
         cell2.innerHTML = "Ingredients";
         cell3.innerHTML = "Directions";
         cell4.innerHTML = "Origin";
         cell5.innerHTML = "Prep-time";
         cell6.innerHTML = "Course";
-	tr.appendChild(cell0);    
+	    tr.appendChild(cell0);    
         tr.appendChild(cell1);
         tr.appendChild(cell2);
         tr.appendChild(cell3);
         tr.appendChild(cell4);
         tr.appendChild(cell5);
         tr.appendChild(cell6);
+        tr.id = "title";
         table.appendChild(tr);
         
         //for every recipe returned make a new table row
@@ -57,8 +66,8 @@ ipcRenderer.on('first_recipe', (event, arg ) => {
             let ingString = '';
             let dirString = '';
             var tr = document.createElement('tr');
-	    tr.id = "row" + i;
-	    var image_cell = document.createElement('td');
+	        tr.id = "row" + i;
+	        var image_cell = document.createElement('td');
             var recipe_cell = document.createElement('td');
             var ingredient_cell = document.createElement('td');
             var direction_cell = document.createElement('td');
@@ -99,7 +108,7 @@ ipcRenderer.on('first_recipe', (event, arg ) => {
             course_cell.innerHTML = arg[i].course;
             
             //add rows to the table
-	    tr.appendChild(image_cell);
+	        tr.appendChild(image_cell);
             tr.appendChild(recipe_cell);
             tr.appendChild(ingredient_cell);
             tr.appendChild(direction_cell);
@@ -110,3 +119,10 @@ ipcRenderer.on('first_recipe', (event, arg ) => {
         }
     }
 })
+
+
+$("#tableId").on('click', 'tr', function() {
+    var rowid = this.id;
+    log(returnarr[rowid]);
+    ipcRenderer.send('display_recipe', returnarr[rowid]);
+});
