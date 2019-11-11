@@ -11,11 +11,16 @@ function log(message){
 
 
 var returnarr;
+var last_table = "";
+$( document ).ready(function() {
+    if(last_table != ""){
+        ipcRenderer.send('recipe', arg);
+    }
+});
 
- 
 //when main sends back a response message it will be received here
 ipcRenderer.on('recipe', (event, arg ) => {
-
+    last_table = arg; 
     //getting a handle on the table and clearing it
     let table = document.getElementById('tableId');
     table.innerHTML = "";
@@ -164,3 +169,4 @@ $("#tableId").on('click', 'tr', function() {
     log(returnarr[rowid]);
     ipcRenderer.send('display_recipe', returnarr[rowid]);
 });
+
