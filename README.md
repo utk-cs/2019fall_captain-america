@@ -15,7 +15,7 @@ from terminal type npm start to load the application
 
 this is how the opening page will appear
 
-
+![mainpage]C:\Users\blake\OneDrive\Documents\GitHub\2019fall_captain-america\images\mainpage.png
 
 when first loaded the recipe database file will be empty, you will need to first enter a recipe
 click "Add Recipe" button to be taken to the add recipe page
