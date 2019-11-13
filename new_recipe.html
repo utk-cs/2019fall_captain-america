@@ -2,6 +2,7 @@
 <html>
 
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
 		input[type=text] {
 			font: helvetica;
@@ -39,6 +40,9 @@
 			cursor: default;
 			width: 200px;
 			margin-bottom: 8px;
+			margin-left: auto;
+			margin-right: auto;
+
 		}
 
 		.button:hover {
@@ -71,6 +75,77 @@
 
 		.recipe-name {
 			text-align: center;
+		}
+
+		#snackbar {
+			visibility: hidden;
+			min-width: 250px;
+			margin-left: -135px;
+			background-color: rgb(150, 1, 28);
+			color: #fff;
+			text-align: center;
+			border-radius: 2px;
+			padding: 14px;
+			position: fixed;
+			z-index: 1;
+			left: 50%;
+			bottom: 30px;
+			font-size: 18px;
+			font-family: helvetica;
+		}
+
+		#snackbar.show {
+			visibility: visible;
+			-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+			animation: fadein 0.5s, fadeout 0.5s 2.5s;
+		}
+
+		@-webkit-keyframes fadein {
+			from {
+				bottom: 0;
+				opacity: 0;
+			}
+
+			to {
+				bottom: 30px;
+				opacity: 1;
+			}
+		}
+
+		@keyframes fadein {
+			from {
+				bottom: 0;
+				opacity: 0;
+			}
+
+			to {
+				bottom: 30px;
+				opacity: 1;
+			}
+		}
+
+		@-webkit-keyframes fadeout {
+			from {
+				bottom: 30px;
+				opacity: 1;
+			}
+
+			to {
+				bottom: 0;
+				opacity: 0;
+			}
+		}
+
+		@keyframes fadeout {
+			from {
+				bottom: 30px;
+				opacity: 1;
+			}
+
+			to {
+				bottom: 0;
+				opacity: 0;
+			}
 		}
 	</style>
 </head>
@@ -125,14 +200,19 @@
 	<!---
 <button id = "add_recipe"  onclick="location.href='basic.html'"  value= "test">Add Recipe</button> </br>
 	-->
-	<div class="bottom-center">
-		<button class="button" id="add_recipe" value="test">Add Recipe</button>
+		<button class="button" onclick="popup()" id="add_recipe" value="test">Add Recipe</button>
+		<div id="snackbar"><div style="text-align:center; margin-bottom: 8px;" id='recipe_exists'>roxanne</div></div>
 		<button class="button" onclick="location.href='basic.html'">Back</button>
-	</div>
+	
 </body>
 
 <script>
-	require('./new_recipe.js')
+	require('./new_recipe.js');
+	function popup() {
+		var x = document.getElementById("snackbar");
+		x.className = "show";
+		setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+	}
 </script>
 
 </html>
