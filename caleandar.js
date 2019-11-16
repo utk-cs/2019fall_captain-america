@@ -1,11 +1,17 @@
 const { ipcRenderer } = require('electron');
 window.$ = window.jQuery = require('jquery');
 
-
 $( document ).ready(function() {
   var element = document.getElementById('caleandar');
   caleandar(element, events, settings);
 });
+
+//document.getElementById('addEvent').addEventListener('click', function(){
+//	ipcRenderer.send('addEvent', '');
+//})
+
+//ipcRenderer.on
+
 var Calendar = function(model, options, date){
   // Default Values
   this.Options = {
@@ -18,7 +24,7 @@ var Calendar = function(model, options, date){
     DateTimeFormat: 'mmm, yyyy',
     DatetimeLocation: '',
     EventClick: '',
-    EventTargetWholeDay: true,
+    EventTargetWholeDay: false,
     DisabledDays: [],
     ModelChange: model
   };
@@ -315,9 +321,26 @@ var settings = {
 	DateTimeFormat: 'mmm, yyyy',
 	DatetimeLocation: '',
 	EventClick: '',
-	EventTargetWholeDay: false,
+	EventTargetWholeDay: true,
 	DisabledDays: [],
 	ModelChange: model
 };
 
+document.getElementById('addEvent').addEventListener('click', function(){
+	ipcRenderer.send('addEvent', '');
+})
 
+//ipcRenderer.on('addEvent', (event, arg) => {
+//  if(arg.length === 0){
+//    var empty = document.createElement("P");
+//    empty.innerHTML = "No recipes added yet";
+//    document.body.appendChild(empty);
+//}
+//  else{
+//    for(var i = 0; i < arg.length; i++){
+//	var newRecipe = document.createElement("BUTTON");
+//	newRecipe.innerHTML = arg[i];
+//	document.body.appendChild(newRecipe);
+//    }
+//}
+//})
