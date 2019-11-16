@@ -252,11 +252,12 @@ ipcMain.on('first_recipe', (event, arg) => {
     })
     event.sender.send('first_recipe', imsorry);
 })
- 
+var came_from;
 var display_recipe;
-ipcMain.on('display_recipe', (event, arg) => {
+ipcMain.on('display_recipe', (event, arg, arg2) => {
     win.loadFile('display_recipe.html');
     display_recipe = arg; 
+    came_from = arg2;
 })
 
 ipcMain.on('display_recipe_ready', (event, arg) => {

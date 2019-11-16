@@ -124,6 +124,6 @@ ipcRenderer.on('first_recipe', (event, arg ) => {
 $("#tableId").on('click', 'tr', function() {
     var rowid = this.id;
     if(rowid !== "title"){
-        ipcRenderer.send('display_recipe', returnarr[rowid]);
+        ipcRenderer.send('display_recipe', returnarr[rowid], 1);
     }
 });
