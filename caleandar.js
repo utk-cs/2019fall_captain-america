@@ -1,4 +1,11 @@
+const { ipcRenderer } = require('electron');
+window.$ = window.jQuery = require('jquery');
 
+
+$( document ).ready(function() {
+var element = document.getElementById('caleandar');
+caleandar(element, events, settings);
+});
 var Calendar = function(model, options, date){
   // Default Values
   this.Options = {
@@ -309,9 +316,8 @@ var settings = {
 	DatetimeLocation: '',
 	EventClick: '',
 	EventTargetWholeDay: false,
-	DisabledDays: [];
+	DisabledDays: [],
 	ModelChange: model
 };
 
-var element = document.getElementById('caleandar');
-caleandar(element, events, settings);
+
