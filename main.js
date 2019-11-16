@@ -266,7 +266,7 @@ ipcMain.on('addEvent', (event, arg) => {
 	recipenames.push(index);
     })
     event.sender.send('addEvent', recipenames);
-}
+})
 
 ipcMain.on('display_recipe_ready', (event, arg) => {
     event.sender.send('random_recipe_return', display_recipe);
