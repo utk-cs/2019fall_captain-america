@@ -167,6 +167,8 @@ document.getElementById('search-request').addEventListener('click', function(){
 $("#tableId").on('click', 'tr', function() {
     var rowid = this.id;
     log(returnarr[rowid]);
-    ipcRenderer.send('display_recipe', returnarr[rowid]);
+    if(rowid !== "title"){
+        ipcRenderer.send('display_recipe', returnarr[rowid]);
+    }
 });
 
