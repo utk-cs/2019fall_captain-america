@@ -66,7 +66,7 @@ ipcRenderer.on('first_recipe', (event, arg ) => {
             let ingString = '';
             let dirString = '';
             var tr = document.createElement('tr');
-	        tr.id = "row" + i;
+	        tr.id = i;
 	        var image_cell = document.createElement('td');
             var recipe_cell = document.createElement('td');
             var ingredient_cell = document.createElement('td');
@@ -123,6 +123,7 @@ ipcRenderer.on('first_recipe', (event, arg ) => {
 
 $("#tableId").on('click', 'tr', function() {
     var rowid = this.id;
-    log(returnarr[rowid]);
-    ipcRenderer.send('display_recipe', returnarr[rowid]);
+    if(rowid !== "title"){
+        ipcRenderer.send('display_recipe', returnarr[rowid]);
+    }
 });
