@@ -3,8 +3,8 @@ window.$ = window.jQuery = require('jquery');
 
 
 $( document ).ready(function() {
-var element = document.getElementById('caleandar');
-caleandar(element, events, settings);
+  var element = document.getElementById('caleandar');
+  caleandar(element, events, settings);
 });
 var Calendar = function(model, options, date){
   // Default Values
@@ -18,7 +18,7 @@ var Calendar = function(model, options, date){
     DateTimeFormat: 'mmm, yyyy',
     DatetimeLocation: '',
     EventClick: '',
-    EventTargetWholeDay: false,
+    EventTargetWholeDay: true,
     DisabledDays: [],
     ModelChange: model
   };
@@ -302,7 +302,7 @@ function caleandar(el, data, settings){
 }
 
 var events = [
-	{'Date': new Date(2019, 11, 7), 'Title': 'Make food'},
+	{'Date': new Date(2019, 10, 7), 'Title': 'Make food'},
 ];
 
 var settings = {
