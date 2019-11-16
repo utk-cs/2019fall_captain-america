@@ -260,6 +260,14 @@ ipcMain.on('display_recipe', (event, arg, arg2) => {
     came_from = arg2;
 })
 
+ipcMain.on('addEvent', (event, arg) => {
+    var recipenames = [];
+    RecipeMap.forEach(function (item, index){
+	recipenames.push(index);
+    })
+    event.sender.send('addEvent', recipenames);
+}
+
 ipcMain.on('display_recipe_ready', (event, arg) => {
     event.sender.send('random_recipe_return', display_recipe);
 })
