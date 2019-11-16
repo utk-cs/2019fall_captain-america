@@ -9,7 +9,8 @@ software needed before installation :  git bash, electron, node.js
 open terminal on your machine
 type git clone https://github.com/utk-cs/2019fall_captain-america.git
 your machine will download the needed files
-from terminal type npm start to load the application
+from terminal type npm install to install needed files
+from terminal type nmp start to load the application
 
 # usage
 
