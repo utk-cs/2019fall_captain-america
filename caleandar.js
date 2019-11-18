@@ -327,20 +327,23 @@ var settings = {
 };
 
 document.getElementById('addEvent').addEventListener('click', function(){
-	ipcRenderer.send('addEvent', '');
+	ipcRenderer.send('addEvent', "");
 })
 
-//ipcRenderer.on('addEvent', (event, arg) => {
-//  if(arg.length === 0){
-//    var empty = document.createElement("P");
-//    empty.innerHTML = "No recipes added yet";
-//    document.body.appendChild(empty);
-//}
-//  else{
-//    for(var i = 0; i < arg.length; i++){
-//	var newRecipe = document.createElement("BUTTON");
-//	newRecipe.innerHTML = arg[i];
-//	document.body.appendChild(newRecipe);
-//    }
-//}
-//})
+ipcRenderer.on('addEvent', (event, arg) => {
+  if(arg.length === 0){
+    var empty = document.createElement("P");
+    empty.innerHTML = "No recipes added yet";
+    document.form.appendChild(empty);
+}
+  else{
+    for(var i = 0; i < arg.length; i++){
+	var newRecipe = document.createElement("BUTTON");
+	newRecipe.innerHTML = arg[i];
+	document.form.appendChild(newRecipe);
+    }
+    var newButton = document.createElement("BUTTON");
+    newButton.innerHTML = "Add to Calendar"
+    document.form.appendChild(newButton);
+  }
+})

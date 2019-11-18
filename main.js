@@ -265,6 +265,9 @@ ipcMain.on('addEvent', (event, arg) => {
     RecipeMap.forEach(function (item, index){
 	recipenames.push(index);
     })
+    for(var i = 0; i < recipenames.length(); i++){
+	console.log(recipenames[i]);
+    }
     event.sender.send('addEvent', recipenames);
 })
 
