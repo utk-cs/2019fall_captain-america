@@ -1,4 +1,6 @@
 const { ipcRenderer } = require('electron');
+const { remote } = require('electron');
+currWindow = remote.getCurrentWindow();
 window.$ = window.jQuery = require('jquery');
 
 $( document ).ready(function() {
@@ -325,11 +327,12 @@ var settings = {
 	DisabledDays: [],
 	ModelChange: model
 };
-
+/*
 document.getElementById('addEvent').addEventListener('click', function(){
+	console.log("hello");
 	ipcRenderer.send('addEvent', "");
 })
-
+*/
 ipcRenderer.on('addEvent', (event, arg) => {
   if(arg.length === 0){
     var empty = document.createElement("P");
@@ -342,8 +345,5 @@ ipcRenderer.on('addEvent', (event, arg) => {
 	newRecipe.innerHTML = arg[i];
 	document.form.appendChild(newRecipe);
     }
-    var newButton = document.createElement("BUTTON");
-    newButton.innerHTML = "Add to Calendar"
-    document.form.appendChild(newButton);
   }
 })
