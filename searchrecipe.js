@@ -11,11 +11,8 @@ function log(message){
 
 
 var returnarr;
-var last_table = "";
 $( document ).ready(function() {
-    if(last_table != ""){
-        ipcRenderer.send('recipe', arg);
-    }
+    ipcRenderer.send('redirect');
 });
 
 //when main sends back a response message it will be received here
@@ -168,7 +165,7 @@ $("#tableId").on('click', 'tr', function() {
     var rowid = this.id;
     log(returnarr[rowid]);
     if(rowid !== "title"){
-        ipcRenderer.send('display_recipe', returnarr[rowid]);
+        ipcRenderer.send('display_recipe', returnarr[rowid], returnarr);
     }
 });
 

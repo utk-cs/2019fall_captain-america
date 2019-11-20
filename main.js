@@ -254,10 +254,11 @@ ipcMain.on('first_recipe', (event, arg) => {
 })
 var came_from;
 var display_recipe;
-ipcMain.on('display_recipe', (event, arg, arg2) => {
+var searcharr = 0;
+ipcMain.on('display_recipe', (event, arg, returnarr) => {
     win.loadFile('display_recipe.html');
     display_recipe = arg; 
-    came_from = arg2;
+    searcharr = returnarr;
 })
 /*
 ipcMain.on('mealPlanner', (event, arg) => {
@@ -273,4 +274,10 @@ ipcMain.on('mealPlanner', (event, arg) => {
 */
 ipcMain.on('display_recipe_ready', (event, arg) => {
     event.sender.send('random_recipe_return', display_recipe);
+})
+
+ipcMain.on('redirect', (event) => {
+    if(searcharr !== 0){
+        event.sender.send('recipe', searcharr);
+    }
 })
