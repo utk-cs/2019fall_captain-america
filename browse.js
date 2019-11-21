@@ -15,9 +15,9 @@ var returnarr;
 
 //when main sends back a response message it will be received here
 //listens for button to be clicked and requests data form main
-document.getElementById('display_first_recipe').addEventListener('click', function(){
+$( document ).ready(function() {
     ipcRenderer.send('first_recipe', "");
-})
+});
 //displays random recipe into html file
 ipcRenderer.on('first_recipe', (event, arg ) => {
     
