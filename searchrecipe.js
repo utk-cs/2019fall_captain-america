@@ -166,7 +166,7 @@ $("#tableId").on('click', 'tr', function() {
     var rowid = this.id;
     log(returnarr[rowid]);
     if(rowid !== "title"){
-        ipcRenderer.send('display_recipe', returnarr[rowid], returnarr);
+        ipcRenderer.send('display_recipe', returnarr[rowid], returnarr, "search");
     }
 });
 

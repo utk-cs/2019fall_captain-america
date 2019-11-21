@@ -3,6 +3,7 @@ window.$ = window.jQuery = require('jquery');
 
 ipcRenderer.send('display_recipe_ready', "ready");
 
+var link;
 ipcRenderer.on('random_recipe_return', (event, arg ) => {
 
 	let recipename = document.getElementById('recipename');
@@ -58,4 +59,8 @@ ipcRenderer.on('random_recipe_return', (event, arg ) => {
 	}
 	
 	directions.textContent = "Directions: " + dirString;
+})
+
+document.getElementById('redirect').addEventListener('click', function(){
+	ipcRenderer.send('redirect_return', link);
 })
