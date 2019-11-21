@@ -101,7 +101,8 @@ ipcRenderer.on('recipe', (event, arg ) => {
             preptime_cell.innerHTML = arg[i].prep;
             course_cell.innerHTML = arg[i].course;
             //blake breaking images here uncomment below line to fix
-            image_cell.innerHTML = "<img src = 'images/" + arg[i].img + "' width = 128px height = 128px> </img>";
+            if (arg[i].img != "") image_cell.innerHTML = "<img src = 'images/" + arg[i].img + "' width = 128px height = 128px> </img>";
+            else image_cell.innerHTML = "";
             //image_cell.innerHTML = "<img src =" + arg[i].img + "' width = 128px height = 128px> </img>";
             //add rows to the table
             tr.appendChild(image_cell);

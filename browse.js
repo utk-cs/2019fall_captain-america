@@ -99,7 +99,8 @@ ipcRenderer.on('first_recipe', (event, arg ) => {
             }	
    
             //fill cells with appropriate data
-            image_cell.innerHTML = "<img src = 'images/" + arg[i].img + " 'width = 128px height = 128px> </img>";
+            if (arg[i].img != "") image_cell.innerHTML = "<img src = 'images/" + arg[i].img + " 'width = 128px height = 128px> </img>";
+            else image_cell.innerHTML = "";
             recipe_cell.innerHTML = arg[i].recipename;
             ingredient_cell.innerHTML = ingString;
             direction_cell.innerHTML = dirString;
