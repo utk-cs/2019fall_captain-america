@@ -67,7 +67,9 @@ ipcRenderer.on('random_recipe_return', (event, arg ) => {
 		  course.textContent = "Course: N/A";
 		}
 
-		if (arg.img != "") img.innerHTML = "<img src = images/" +  arg.img + ' width="512" height="360"> </img>'
+		if (arg.img != "") img.innerHTML = "<img src = images/" +  arg.img + ' width="512" height="360"> </img>';
+		if (arg.img != "") img.innerHTML = "<img src = images/" +  arg.img + ' width="512" height="360"> </img>';
+		else img.innerHTML = "";
 		//console.log(img);
 	    
         for(let i = 0; i < arg.ingredients.length; i++){
