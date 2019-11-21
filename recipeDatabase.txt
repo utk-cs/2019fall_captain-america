@@ -1,0 +1,32 @@
+Traditional Meat Loaf
+
+90
+Dinner
+meatloaf.jpg
+Bread,Ground beef,Egg,Milk,Cheese
+Tear bread; place in blender.,Cover and pulse. Transfer to a bowl.,Stir in egg milk and cheese.,Add beef; mix lightly but thoroughly.,Transfer to a greased loaf pan.,Bake 60 minutes. Let stand 10 minutes.
+
+Chicken Noodle Soup
+American
+30
+
+chicken_soup.jpg
+Butter,Chicken broth,Vegetable broth,Chicken breast,Egg noodles,Carrots,Celery,Oregano,Basil
+Melt butter,Cook celery in butter until tender,Pour in chicken and vegetable broths,Stir in chicken; noodles; carrots; basil; oregano.,Bring to a boil; reduce heat.,Simmer for 20 minutes.
+
+Tacos
+Tex-Mex
+30
+
+tacos.jpg
+Ground beef,Salsa,Taco shells,Lettuce,Tomato,Cheddar cheese
+Cook beef in skiller over medium-heat stirring occasionally until brown. Drain.,Stir salsa into beef. Heat to boiling stirring constantly.,Reduce heat to medium-low.,Cook 5 minutes stirring occasionally.,Pour beef mixture into bowl.,Heat taco shells.
+
+Tomato Soup
+
+45
+Appetizer
+tomato_soup.jpg
+Butter,Onion,Canned tomatoes,Vegetable stock,Salt
+Mlet butter over medium heat.,Add onion wedges; water; can of tomatoes with juices; and salt.,Bring to a simmer.,Cook uncovered for 40 minutes. Stir occasionally.,Blend the soup. Season to taste.
+
