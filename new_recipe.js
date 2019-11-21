@@ -67,7 +67,7 @@ $(document).ready(function() {
 		e.preventDefault();
 		if(x < max_fields){ //max input box allowed
 			x++; //text box increment
-			$(wrapper).append('<div><input type="text" class = "dir_text"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+			$(wrapper).append('<div><input type="text" class = "dir_text"/><a href="#" class="remove_field" style="color: rgb(150, 1, 28);">Remove</a></div>'); //add input box
 		}
 	});
 	
@@ -86,7 +86,7 @@ $(document).ready(function() {
 		e.preventDefault();
 		if(x < max_fields){ //max input box allowed
 			x++; //text box increment
-			$(wrapper).append('<div><input type="text" class = "ing_text"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+			$(wrapper).append('<div><input type="text" class = "ing_text"/><a href="#" class="remove_field" style="color: rgb(150, 1, 28);">Remove</a></div>'); //add input box
 		}
 	});
 	
