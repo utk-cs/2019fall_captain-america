@@ -8,12 +8,6 @@ $( document ).ready(function() {
   caleandar(element, events, settings);
 });
 
-//document.getElementById('addEvent').addEventListener('click', function(){
-//	ipcRenderer.send('addEvent', '');
-//})
-
-//ipcRenderer.on
-
 var Calendar = function(model, options, date){
   // Default Values
   this.Options = {
@@ -332,13 +326,13 @@ document.getElementById('addEvent').addEventListener('click', function(){
 	console.log("hello");
 	ipcRenderer.send('addEvent', "");
 })
-*/
+
 ipcRenderer.on('addEvent', (event, arg) => {
   if(arg.length === 0){
     var empty = document.createElement("P");
     empty.innerHTML = "No recipes added yet";
     document.form.appendChild(empty);
-}
+  }
   else{
     for(var i = 0; i < arg.length; i++){
 	var newRecipe = document.createElement("BUTTON");
@@ -346,4 +340,4 @@ ipcRenderer.on('addEvent', (event, arg) => {
 	document.form.appendChild(newRecipe);
     }
   }
-})
+})*/

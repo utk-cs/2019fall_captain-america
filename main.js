@@ -260,18 +260,16 @@ ipcMain.on('display_recipe', (event, arg, returnarr) => {
     display_recipe = arg; 
     searcharr = returnarr;
 })
-/*
-ipcMain.on('mealPlanner', (event, arg) => {
+
+ipcMain.on('Planner', (event, arg) => {
     var recipenames = [];
     RecipeMap.forEach(function (item, index){
 	recipenames.push(index);
     })
-    for(var i = 0; i < recipenames.length(); i++){
-	console.log(recipenames[i]);
-    }
+
     event.sender.send('addEvent', recipenames);
 })
-*/
+
 ipcMain.on('display_recipe_ready', (event, arg) => {
     event.sender.send('random_recipe_return', display_recipe);
 })
