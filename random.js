@@ -45,7 +45,7 @@ ipcRenderer.on('random_recipe_return', (event, arg ) => {
 		origin.textContent = "Origin: " + arg.origin;
 		prep.textContent = "Prep Time: " + arg.prep;
 		course.textContent = "Course: " + arg.course;
-		img.innerHTML = "<img src = images/" +  arg.img + ' width="512" height="360"> </img>'
+		if (arg.img != "") img.innerHTML = "<img src = images/" +  arg.img + ' width="512" height="360"> </img>'
 		//console.log(img);
 	    
         for(let i = 0; i < arg.ingredients.length; i++){
