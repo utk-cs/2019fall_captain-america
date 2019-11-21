@@ -187,24 +187,17 @@
 					<button class="button add_field_button">Add More Fields</button>
 	</form>
 	<br>
-	<div style="text-align:center; margin-bottom: 8px;" id='recipe_exists'>
-	</div>
 	<!---
 <button id = "add_recipe"  onclick="location.href='basic.html'"  value= "test">Add Recipe</button> </br>
 	-->
-		<button class="button" onclick="popup()" id="add_recipe" value="test">Add Recipe</button>
-		<div id="snackbar"><div style="text-align:center; margin-bottom: 8px;" id='recipe_exists'>roxanne</div></div>
+		<button class="button" id="add_recipe" value="test">Add Recipe</button>
+		<div id="snackbar"></div>
 		<button class="button" onclick="location.href='basic.html'">Back</button>
 	
 </body>
 
 <script>
 	require('./new_recipe.js');
-	function popup() {
-		var x = document.getElementById("snackbar");
-		x.className = "show";
-		setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
-	}
 </script>
 
 </html>

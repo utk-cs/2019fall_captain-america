@@ -206,11 +206,11 @@ ipcMain.on('recipe', (event, recipe_name, ingredients, directions, origin, prep,
     if(RecipeMap.has(recipe_name) == false){
         let newrecipe = new Recipe(recipe_name, ingredients, directions, origin, prep, course, img);
 	    RecipeMap.set(recipe_name, newrecipe);
-        event.sender.send('recipe_exists', false);
+        event.returnValue = "Recipe added successfully";
     }
     //if it does exist send back an error
     else{
-        event.sender.send('recipe_exists', true);
+        event.returnValue = "Recipe already exists";
     }
 })
 
