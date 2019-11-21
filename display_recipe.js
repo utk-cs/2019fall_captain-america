@@ -15,9 +15,26 @@ ipcRenderer.on('random_recipe_return', (event, arg ) => {
 	let dirString = "";
 	let img = document.getElementById('img');
 	recipename.textContent = arg.recipename;
-	origin.textContent = "Origin: " + arg.origin;
-	prep.textContent = "Prep Time: " + arg.prep;
-	course.textContent = "Course: " + arg.course;
+	
+	if(arg.origin != ""){
+	  origin.textContent = "Origin: " + arg.origin;
+	}
+	else{
+	  origin.textContent = "Origin: N/A";
+	}
+	if(arg.prep != ""){
+	  prep.textContent = "Prep Time: " + arg.prep;
+	}
+	else{
+	  prep.textContent = "Prep Time: N/A";
+	}
+	if(arg.course != ""){
+	  course.textContent = "Course: " + arg.course;
+	}
+	else{
+	  course.textContent = "Course: N/A";
+	}
+
 	if (arg.img != "") img.innerHTML = "<img src = images/" +  arg.img + ' width="512" height="360"> </img>';
 	else  img.innerHTML = "";
 	
