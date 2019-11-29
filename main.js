@@ -202,8 +202,13 @@ ipcMain.on('browse-request', (event, arg) => {
 
 //listens for new recipe to add
 ipcMain.on('recipe', (event, recipe_name, ingredients, directions, origin, prep, course, img) => {
+    // if there is no recipe name, then make the user enter one
+    if (recipe_name == "") {
+        event.returnValue = "Please enter recipe name";
+    }
+    
     //if recipe name does not exist add it to the map
-    if(RecipeMap.has(recipe_name) == false){
+    else if(RecipeMap.has(recipe_name) == false){
         let newrecipe = new Recipe(recipe_name, ingredients, directions, origin, prep, course, img);
 	    RecipeMap.set(recipe_name, newrecipe);
         event.returnValue = "Recipe added successfully";

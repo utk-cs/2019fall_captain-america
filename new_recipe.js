@@ -40,10 +40,13 @@ document.getElementById('add_recipe').addEventListener('click', function(){
     //let img = document.getElementById('img').value
     
     recipe_exists.textContent = ipcRenderer.sendSync('recipe', recipe_name, ingredients, directions, origin, prep, course, img);
-    var elements = document.getElementsByTagName("input");
-	    for (var i=0; i < elements.length; i++) {
+    // if user needs to enter recipe name, dont clear the fields
+    if (recipe_exists.textContent != "Please enter recipe name") {
+        var elements = document.getElementsByTagName("input");
+        for (var i=0; i < elements.length; i++) {
             elements[i].value = "";
-	    }
+        }
+    }
 })
 
 $(document).ready(function() {
