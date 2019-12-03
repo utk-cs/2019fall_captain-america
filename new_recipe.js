@@ -36,10 +36,11 @@ document.getElementById('add_recipe').addEventListener('click', function(){
     let origin = document.getElementById('origin').value;
     let prep = document.getElementById('prep').value;
     let course = document.getElementById('course').value;
+    let servings = document.getElementById('servings').value;
     let img = document.getElementById('img').value.replace("C:\\fakepath\\", "");
     //let img = document.getElementById('img').value
     
-    recipe_exists.textContent = ipcRenderer.sendSync('recipe', recipe_name, ingredients, directions, origin, prep, course, img);
+    recipe_exists.textContent = ipcRenderer.sendSync('recipe', recipe_name, ingredients, directions, origin, prep, course, img, servings);
     // if user needs to enter recipe name, dont clear the fields
     if (recipe_exists.textContent != "Please enter recipe name") {
         var elements = document.getElementsByTagName("input");

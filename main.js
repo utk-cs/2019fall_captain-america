@@ -7,7 +7,7 @@ fs.open('recipeDatabase.txt', 'r+', function(err, file) {
 });
  
 class Recipe{
-	constructor(name, ing, dir, orig, prep, course, img){
+	constructor(name, ing, dir, orig, prep, course, img, servings){
 		this.recipename = name;
 		this.ingredients = ing;
 		this.directions = dir;
@@ -15,6 +15,7 @@ class Recipe{
 		this.prep = prep;
         this.course = course;
         this.img = img;
+        this.servings = servings;
 	}
 	get name(){
 		return this.recipename;
@@ -201,7 +202,7 @@ ipcMain.on('browse-request', (event, arg) => {
 
 
 //listens for new recipe to add
-ipcMain.on('recipe', (event, recipe_name, ingredients, directions, origin, prep, course, img) => {
+ipcMain.on('recipe', (event, recipe_name, ingredients, directions, origin, prep, course, img, servings) => {
     // if there is no recipe name, then make the user enter one
     if (recipe_name == "") {
         event.returnValue = "Please enter recipe name";
@@ -209,7 +210,7 @@ ipcMain.on('recipe', (event, recipe_name, ingredients, directions, origin, prep,
     
     //if recipe name does not exist add it to the map
     else if(RecipeMap.has(recipe_name) == false){
-        let newrecipe = new Recipe(recipe_name, ingredients, directions, origin, prep, course, img);
+        let newrecipe = new Recipe(recipe_name, ingredients, directions, origin, prep, course, img, servings);
 	    RecipeMap.set(recipe_name, newrecipe);
         event.returnValue = "Recipe added successfully";
     }
